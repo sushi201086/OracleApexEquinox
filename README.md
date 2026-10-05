@@ -8,8 +8,8 @@ column is calculated**, traced through any number of jobs and view layers.
 |---|---|---|
 | Lineage repository | `sql/01_lineage_schema.sql` | Tables that store runs, jobs, groups, edges, nodes, job dependencies, view DDL, syntax trees and column lineage |
 | `BOOK_JOBS` + loader | `sql/02_book_jobs_table.sql` | Metadata table (same columns as the sheet) and an `APEX_DATA_PARSER` .xlsx loader |
-| **`LIN_SQL_PARSER`** | `sql/03_lin_sql_parser.pks/.pkb` | A SQL "tree sitter" in PL/SQL: tokenizer, a fault-tolerant recursive-descent parser that builds a syntax tree, then object and column-lineage extraction |
-| **`LIN_ENGINE`** | `sql/04_lin_engine.pks/.pkb` | Lineage engine: business rules, view capture, node classification, DAG levels, job dependencies, column and object traces |
+| **`LIN_SQL_PARSER`** | `sql/03_lin_sql_parser_spec.sql / _body.sql` | A SQL "tree sitter" in PL/SQL: tokenizer, a fault-tolerant recursive-descent parser that builds a syntax tree, then object and column-lineage extraction |
+| **`LIN_ENGINE`** | `sql/04_lin_engine_spec.sql / _body.sql` | Lineage engine: business rules, view capture, node classification, DAG levels, job dependencies, column and object traces |
 | View DDL helper | `sql/05_view_extraction.sql` | `ALL_VIEWS` / `USER_VIEWS` / `TO_LOB` / `DBMS_METADATA` / `ALL_DEPENDENCIES` / `INFORMATION_SCHEMA` queries |
 | Reports | `sql/06_lineage_reports.sql` | Ready-made questions: roots, terminals, impact analysis, column traces, syntax-tree browsing, run diff |
 | Python edition | `python/lineage_engine.py` | Reads the Excel sheet offline and applies the same rules. Writes CSV, Mermaid diagrams, the `BOOK_JOBS` load script and a view-DDL extraction script |

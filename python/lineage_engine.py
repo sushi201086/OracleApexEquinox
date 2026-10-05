@@ -3,7 +3,7 @@
 Book_Jobs lineage engine (offline / Python edition).
 
 Reads the Book_Jobs Excel sheet (or a CSV export), applies the same rules as
-the PL/SQL engine (sql/04_lin_engine.pkb) and writes the results as CSV files:
+the PL/SQL engine (sql/04_lin_engine_body.sql) and writes the results as CSV files:
 
     jobs.csv          every job with case type, action type, parse status
     job_groups.csv    JOB_NAMES exploded into (job, group, position, path)

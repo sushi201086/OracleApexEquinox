@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- 03_lin_sql_parser.pkb
+-- 03_lin_sql_parser_body.sql
 --------------------------------------------------------------------------------
 set define off
 create or replace package body lin_sql_parser as

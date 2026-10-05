@@ -18,12 +18,12 @@ prompt == BOOK_JOBS table + xlsx loader
 @@sql/02_book_jobs_table.sql
 
 prompt == LIN_SQL_PARSER (SQL tree sitter)
-@@sql/03_lin_sql_parser.pks
-@@sql/03_lin_sql_parser.pkb
+@@sql/03_lin_sql_parser_spec.sql
+@@sql/03_lin_sql_parser_body.sql
 
 prompt == LIN_ENGINE
-@@sql/04_lin_engine.pks
-@@sql/04_lin_engine.pkb
+@@sql/04_lin_engine_spec.sql
+@@sql/04_lin_engine_body.sql
 
 whenever sqlerror continue
 prompt == invalid objects (expect none)

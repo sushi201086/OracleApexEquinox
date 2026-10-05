@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- 03_lin_sql_parser.pks
+-- 03_lin_sql_parser_spec.sql
 -- LIN_SQL_PARSER : a fault-tolerant SQL "tree sitter" written in PL/SQL.
 --
 --   * Tokenizer   : Oracle SQL / PL-SQL lexer (quoted ids, q'[...]' strings,

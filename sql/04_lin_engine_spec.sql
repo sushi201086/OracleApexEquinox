@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- 04_lin_engine.pks
+-- 04_lin_engine_spec.sql
 -- LIN_ENGINE : Book_Jobs lineage engine.
 --
 --   1. Snapshot BOOK_JOBS into LIN_JOB, flag inactive rows (DISABLED_FLAG).
