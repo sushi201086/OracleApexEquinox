@@ -127,6 +127,35 @@ begin
   check_eq('all views parsed OK',
            q('select count(*) from lin_parse where run_id = ' || l_run || ' and source_kind = ''VIEW'' and status != ''OK'''), '0');
 
+  -- parser regressions from real views (XML aggregation, TABLE(), unaliased
+  -- inline-view expressions, recursive CTE, unsupported syntax recovery)
+  declare
+    type t_cases is table of varchar2(2000);
+    l_cases t_cases := t_cases(
+      q'[select sbc.con_id, rtrim(xmlagg(xmlelement(e, o.prod_id || ',')).extract('//text()').getclobval(), ',') ids
+         from src_contract_hdr sbc join src_contract_dtl o on o.con_id = sbc.con_id group by sbc.con_id]',
+      q'[select t.column_value cv, xmltype.getStringVal(value(t)) s
+         from src_contract_dtl d, table(xmlsequence(xmltype(d.prod_id).extract('/a/b'))) t]',
+      q'[select x."SUM(AMT)" amt from (select con_id, sum(amt) from src_contract_dtl group by con_id) x]',
+      q'[with r (n, v) as (select 1, con_id from src_contract_dtl union all select n + 1, v from r where n < 3)
+         select n, v from r]',
+      q'[select a.account_name, a.region weird ### stuff, b.rate from src_account a, src_fx_rate b]');
+    l_st  varchar2(20);
+    l_col lin_sql_parser.t_col_lins;
+    l_bad pls_integer;
+  begin
+    for i in 1 .. l_cases.count loop
+      l_st  := lin_sql_parser.parse(l_cases(i), 'REGRESSION_V');
+      l_col := lin_sql_parser.col_lineage;
+      l_bad := 0;
+      for k in 1 .. l_col.count loop
+        if l_col(k).resolution in ('UNRESOLVED', 'AMBIGUOUS') then l_bad := l_bad + 1; end if;
+      end loop;
+      check_eq('parser regression ' || i || ' has lineage and nothing unresolved',
+               case when l_col.count > 0 then to_char(l_bad) end, '0');
+    end loop;
+  end;
+
   if l_fail > 0 then
     raise_application_error(-20999, l_fail || ' lineage test(s) failed');
   end if;

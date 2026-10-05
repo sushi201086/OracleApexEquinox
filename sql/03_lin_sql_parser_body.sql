@@ -15,7 +15,7 @@ create or replace package body lin_sql_parser as
     epos  pls_integer
   );
   type t_toks      is table of t_tok        index by pls_integer;
-  type t_set       is table of boolean      index by varchar2(64);
+  type t_set       is table of boolean      index by varchar2(128);
   type t_names     is table of varchar2(128) index by pls_integer;
   type t_names_qb  is table of t_names      index by pls_integer;
   type t_dict      is table of t_names      index by varchar2(261);
@@ -44,7 +44,7 @@ create or replace package body lin_sql_parser as
   );
   type t_qbs is table of t_qb index by pls_integer;
 
-  type t_src is record (qb pls_integer, alias varchar2(261), obj varchar2(261), dq pls_integer);
+  type t_src is record (qb pls_integer, alias varchar2(261), obj varchar2(261), dq pls_integer, cte pls_integer);
   type t_srcs is table of t_src index by pls_integer;
 
   type t_item is record (
@@ -703,7 +703,7 @@ create or replace package body lin_sql_parser as
   begin
     f := add_node('FUNCTION', p_parent, p_name, p_spos);
     e.node := f;
-    is_agg := s_agg.exists(substr(u, 1, 64)) and instr(p_name, '.') = 0;
+    is_agg := s_agg.exists(substr(u, 1, 128)) and instr(p_name, '.') = 0;
     if u = 'DECODE' then e.has_case := true; end if;
     adv;                                   -- (
     if tu in ('SELECT', 'WITH') then
@@ -712,6 +712,17 @@ create or replace package body lin_sql_parser as
       e.has_subq := true;
     else
       if u = 'EXTRACT' and tt = 'ID' then adv; end if;   -- datetime field
+      if u in ('VALUE', 'REF', 'DEREF') and tt in ('ID', 'QID') and tt(1) = ')' then
+        -- VALUE(t): the row of table alias t (TABLE() collections expose COLUMN_VALUE)
+        add_leaf('COLUMN_REF', f, tk().utxt || '.COLUMN_VALUE');
+        add_cref(p_qb, p_item, p_clause, tk().utxt, 'COLUMN_VALUE');
+        e.n_refs := e.n_refs + 1;
+        adv;
+      end if;
+      if u = 'XMLELEMENT' then                            -- XMLELEMENT([NAME] tag, ...)
+        if tu in ('NAME', 'EVALNAME') and tt(1) in ('ID', 'QID') then adv; end if;
+        if tt in ('ID', 'QID') and tt(1) in (',', ')') then adv; end if;
+      end if;
       loop
         guard := g_p;
         exit when tt in (')', 'EOF', ';');
@@ -983,6 +994,21 @@ create or replace package body lin_sql_parser as
         e.atoms := e.atoms + 1;
         prev_op := true;
 
+      elsif t.ttype = '.' and prev_op and tt(1) in ('ID', 'QID') then
+        -- method call / attribute on an expression: XMLAGG(...).EXTRACT('//text()'),
+        -- XMLTYPE(x).getStringVal(), (obj).attr
+        adv;                               -- .
+        spos := tk().spos;
+        nm := '.' || tk().utxt;
+        adv;
+        if tt = '(' then
+          sub := parse_function(n, p_qb, p_clause, p_item, nm, spos);
+          merge_info(e, sub);
+        else
+          leaf := add_node('ATTRIBUTE', n, nm, spos, last_epos);
+        end if;
+        prev_op := true;
+
       elsif t.ttype in ('STR', 'NUM', 'BIND') then
         add_leaf(case t.ttype when 'BIND' then 'BIND' else 'LITERAL' end, n);
         adv;
@@ -1054,11 +1080,21 @@ create or replace package body lin_sql_parser as
       alias := read_alias;
       add_src(p_qb, alias, null, dq);
     elsif tu in ('TABLE', 'XMLTABLE', 'JSON_TABLE', 'THE') and tt(1) = '(' then
+      -- collection / table function: its rows expose COLUMN_VALUE, computed from
+      -- the expression inside the parentheses (which may reference earlier FROM items)
       t := add_node('TABLE_FUNCTION', p_parent, tu);
-      adv;
-      e := parse_expr(t, p_qb, 'FROM', null, 'ARG');
+      adv;                                 -- TABLE
+      adv;                                 -- (
+      dq := new_qb('TFUNC', p_qb);
+      e := parse_expr(t, dq, 'SELECT', 1, 'ARG');
+      while tt = ',' loop                  -- XMLTABLE / JSON_TABLE extra arguments
+        adv;
+        e := parse_expr(t, dq, 'SELECT', 1, 'ARG');
+      end loop;
+      need(')');
+      add_item(dq, 1, 'COLUMN_VALUE', src_text(g_ast(t).start_pos, last_epos), 'CALCULATED');
       alias := read_alias;
-      add_src(p_qb, alias, null, null);
+      add_src(p_qb, alias, null, dq);
     elsif tt in ('ID', 'QID') then
       spos := cur_spos;
       nm := read_name;
@@ -1067,6 +1103,7 @@ create or replace package body lin_sql_parser as
         t := add_node('CTE_REF', p_parent, nm, spos, last_epos);
         alias := read_alias;
         add_src(p_qb, nvl(alias, nm), null, g_cte(ci).qb);
+        g_src(g_src.count).cte := ci;      -- recursive CTE: linked once its definition is parsed
       else
         nm := strip_owner(nm);
         t := add_node('TABLE_REF', p_parent, nm, spos, last_epos);
@@ -1133,8 +1170,23 @@ create or replace package body lin_sql_parser as
           skip_parens;
         end if;
         close_node(j);
-      else
+      elsif tt in (')', ';', 'EOF')
+         or nvl(tu, '~') in ('WHERE', 'GROUP', 'HAVING', 'ORDER', 'CONNECT', 'START', 'UNION',
+                             'INTERSECT', 'MINUS', 'EXCEPT', 'MODEL', 'WINDOW', 'FETCH', 'OFFSET',
+                             'FOR', 'ON', 'USING', 'WHEN', 'SET', 'VALUES', 'RETURNING', 'LOG',
+                             'WITH', 'SELECT', 'QUALIFY') then
         exit;
+      else
+        -- unsupported syntax inside FROM: skip it, keep the following tables
+        note_partial('Skipped unsupported FROM syntax at char ' || cur_spos || ': '
+                     || substr(tk().txt, 1, 40));
+        loop
+          exit when tt in (',', ')', ';', 'EOF')
+                 or nvl(tu, '~') in ('JOIN', 'INNER', 'LEFT', 'RIGHT', 'FULL', 'CROSS', 'NATURAL',
+                                     'WHERE', 'GROUP', 'HAVING', 'ORDER', 'CONNECT', 'START',
+                                     'UNION', 'INTERSECT', 'MINUS', 'EXCEPT');
+          if tt = '(' then skip_parens; else adv; end if;
+        end loop;
       end if;
       exit when g_p = guard;
     end loop;
@@ -1182,7 +1234,9 @@ create or replace package body lin_sql_parser as
         add_leaf('ALIAS', it, alias);
         adv;
       end if;
-      nm := substr(coalesce(alias, e.simple_col, 'EXPR$' || p_pos), 1, 128);
+      -- Oracle names an unaliased expression after its text: SUM(LOCAL_AMOUNT)
+      nm := substr(coalesce(alias, e.simple_col,
+                            upper(replace(expr_text(e.node), ' ')), 'EXPR$' || p_pos), 1, 128);
       add_item(p_qb, p_pos, nm, expr_text(e.node), item_transform(e, nm), false, null,
                e.has_agg and e.n_refs = 0);
     end if;
@@ -1206,7 +1260,26 @@ create or replace package body lin_sql_parser as
     lst := add_node('SELECT_LIST', n);
     loop
       pos := pos + 1;
-      parse_select_item(lst, qb, pos);
+      begin
+        parse_select_item(lst, qb, pos);
+      exception
+        when others then
+          g_role := 'VALUE';
+          note_partial('Select item ' || pos || ' near char ' || cur_spos || ': ' || sqlerrm);
+      end;
+      -- anything other than ',' / FROM here is a construct the parser did not
+      -- understand: skip to the end of this item and keep going
+      if tt not in (',', ')', ';', 'EOF')
+         and nvl(tu, '~') not in ('FROM', 'INTO', 'BULK', 'UNION', 'INTERSECT', 'MINUS', 'EXCEPT',
+                                  'WHERE', 'GROUP', 'ORDER', 'FETCH', 'OFFSET') then
+        note_partial('Skipped unsupported syntax in select item ' || pos || ' at char ' || cur_spos
+                     || ': ' || substr(tk().txt, 1, 40));
+        loop
+          exit when tt in (',', ')', ';', 'EOF')
+                 or nvl(tu, '~') in ('FROM', 'INTO', 'BULK', 'UNION', 'INTERSECT', 'MINUS', 'EXCEPT');
+          if tt = '(' then skip_parens; else adv; end if;
+        end loop;
+      end if;
       exit when not take(',');
     end loop;
     close_node(lst);
@@ -1322,6 +1395,9 @@ create or replace package body lin_sql_parser as
         cq := parse_query(c, p_outer);
         need(')');
         g_cte(ci).qb := cq;
+        for i in 1 .. g_src.count loop       -- self references inside a recursive CTE
+          if g_src(i).cte = ci and g_src(i).dq is null then g_src(i).dq := cq; end if;
+        end loop;
         if names.count > 0 then g_qb_names(cq) := names; end if;
       end if;
       if tu in ('SEARCH', 'CYCLE') then
@@ -1916,6 +1992,7 @@ create or replace package body lin_sql_parser as
   function out_find (p_qb pls_integer, p_col varchar2) return pls_integer is
   begin
     compute_outputs(p_qb);
+    if g_qb(p_qb).out_first is null then return null; end if;   -- still being computed
     for i in g_qb(p_qb).out_first .. g_qb(p_qb).out_first + g_qb(p_qb).out_cnt - 1 loop
       if g_outs(i).name = p_col then return i; end if;
     end loop;
@@ -1957,6 +2034,7 @@ create or replace package body lin_sql_parser as
   begin
     if dq is not null then
       compute_outputs(dq);
+      if g_qb(dq).out_first is null then return true; end if;
       for i in g_qb(dq).out_first .. g_qb(dq).out_first + g_qb(dq).out_cnt - 1 loop
         if g_outs(i).name = '*' then return true; end if;
       end loop;
@@ -2037,6 +2115,9 @@ create or replace package body lin_sql_parser as
     end if;
 
     dq := g_src(s).dq;
+    if dq is not null and g_qb(dq).visiting then
+      return l;                            -- recursive CTE reading itself: nothing new upstream
+    end if;
     if dq is not null then
       o := out_find(dq, p_col);
       if o is not null then
@@ -2047,7 +2128,7 @@ create or replace package body lin_sql_parser as
         end if;
       else
         -- pass through an unexpanded SELECT * of the derived table
-        for i in g_qb(dq).out_first .. g_qb(dq).out_first + g_qb(dq).out_cnt - 1 loop
+        for i in nvl(g_qb(dq).out_first, 1) .. nvl(g_qb(dq).out_first + g_qb(dq).out_cnt - 1, 0) loop
           if g_outs(i).name = '*' then
             for k in 1 .. g_outs(i).lins.count loop
               add_lin(l, g_outs(i).lins(k).obj, p_col, 'DIRECT', g_outs(i).lins(k).role, 'VIA_STAR');
@@ -2077,7 +2158,8 @@ create or replace package body lin_sql_parser as
               or (g_src(s).alias is null and (g_src(s).obj = p_qual or last_part(g_src(s).obj) = p_qual))) then
         if g_src(s).dq is not null then
           compute_outputs(g_src(s).dq);
-          for i in g_qb(g_src(s).dq).out_first .. g_qb(g_src(s).dq).out_first + g_qb(g_src(s).dq).out_cnt - 1 loop
+          for i in nvl(g_qb(g_src(s).dq).out_first, 1)
+                .. nvl(g_qb(g_src(s).dq).out_first + g_qb(g_src(s).dq).out_cnt - 1, 0) loop
             n := p_outs.count + 1;
             p_outs(n) := g_outs(i);
           end loop;
@@ -2121,6 +2203,7 @@ create or replace package body lin_sql_parser as
         if g_br(b).setop = p_qb then
           br := g_br(b).br;
           compute_outputs(br);
+          if g_qb(br).out_first is null then continue; end if;
           if first then
             for k in 1 .. g_qb(br).out_cnt loop
               l_outs(k) := g_outs(g_qb(br).out_first + k - 1);
@@ -2160,7 +2243,8 @@ create or replace package body lin_sql_parser as
             for q in 1 .. g_sq.count loop
               if g_sq(q).qb = p_qb and g_sq(q).item_pos = g_item(i).pos then
                 compute_outputs(g_sq(q).sq);
-                if g_qb(g_sq(q).sq).out_cnt >= nvl(g_sq(q).sq_pos, 1) then
+                if g_qb(g_sq(q).sq).out_first is not null
+                   and g_qb(g_sq(q).sq).out_cnt >= nvl(g_sq(q).sq_pos, 1) then
                   o := g_qb(g_sq(q).sq).out_first + nvl(g_sq(q).sq_pos, 1) - 1;
                   for k in 1 .. g_outs(o).lins.count loop
                     add_lin(l_outs(n).lins, g_outs(o).lins(k).obj, g_outs(o).lins(k).col,
@@ -2418,7 +2502,7 @@ create or replace package body lin_sql_parser as
   -- Keyword tables
   ------------------------------------------------------------------------------
   procedure load_set (p_set in out nocopy t_set, p_words varchar2) is
-    w varchar2(64);
+    w varchar2(128);
     i pls_integer := 1;
   begin
     loop
