@@ -12,6 +12,7 @@ column is calculated**, traced through any number of jobs and view layers.
 | **`LIN_ENGINE`** | `sql/04_lin_engine_spec.sql / _body.sql` | Lineage engine: business rules, view capture, node classification, DAG levels, job dependencies, column and object traces |
 | View DDL helper | `sql/05_view_extraction.sql` | `ALL_VIEWS` / `USER_VIEWS` / `TO_LOB` / `DBMS_METADATA` / `ALL_DEPENDENCIES` / `INFORMATION_SCHEMA` queries |
 | Reports | `sql/06_lineage_reports.sql` | Ready-made questions: roots, terminals, impact analysis, column traces, syntax-tree browsing, run diff |
+| APEX explorer | `sql/07_apex_support.sql`, `docs/APEX_LINEAGE_EXPLORER.md` | Helper views and a step-by-step guide for an APEX page that shows any column's calculation, lineage chain, tree and view SQL |
 | Python edition | `python/lineage_engine.py` | Reads the Excel sheet offline and applies the same rules. Writes CSV, Mermaid diagrams, the `BOOK_JOBS` load script and a view-DDL extraction script |
 | Tests | `tests/` | `test_engine.sql` (30 assertions against a mock schema) and `test_lineage_engine.py` (pytest) |
 
