@@ -1,0 +1,21 @@
+flowchart LR
+  n7["LKP_A_PULL_OPP_VAR"]
+  n399["LKP_X_PULL_OPP_VAR"]
+  n7 -->|83 LOAD_REPLACE| n399
+  n400["RPT_DAILY_LIST_1C_V"]
+  n401["RPT_DAILY_LIST_1C"]
+  n400 -->|87 LOAD_REPLACE| n401
+  n402["RPT_DAILY_LIST_V"]
+  n403["RPT_DAILY_LIST"]
+  n402 -->|88 LOAD_REPLACE| n403
+  n438["APP_SNAP_DAILY_LIST_V"]
+  n439["SNAP_DAILY_LIST"]
+  n438 -->|90 LOAD_KEYED| n439
+  style n400 fill:#e3f2fd,stroke:#1565c0
+  style n7 fill:#fff8e1,stroke:#f9a825
+  style n439 fill:#e8f5e9,stroke:#2e7d32
+  style n401 fill:#e8f5e9,stroke:#2e7d32
+  style n399 fill:#e8f5e9,stroke:#2e7d32
+  style n403 fill:#e8f5e9,stroke:#2e7d32
+  style n402 fill:#e3f2fd,stroke:#1565c0
+  style n438 fill:#e3f2fd,stroke:#1565c0

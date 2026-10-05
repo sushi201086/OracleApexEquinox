@@ -1,0 +1,36 @@
+flowchart LR
+  n522["TAXIS_STEP1_MON_BU_FC_V"]
+  n523["TAXIS_STEP1_MON_BU_FC"]
+  n522 -->|1001 LOAD_REPLACE| n523
+  n524["TAXIS_STEP1_MON_CORP_FC_V"]
+  n525["TAXIS_STEP1_MON_CORP_FC"]
+  n524 -->|1002 LOAD_REPLACE| n525
+  n526["TAXIS_STEP1_MON_FANDG_FC_V"]
+  n527["TAXIS_STEP1_MON_FANDG_FC"]
+  n526 -->|1003 LOAD_REPLACE| n527
+  n528["TAXIS_STEP2_BU_FANDG_DIFF_V"]
+  n529["TAXIS_STEP2_BU_FANDG_DIFF"]
+  n528 -->|1004 LOAD_REPLACE| n529
+  n530["TAXIS_STEP3_5MON_AVG_REV_V"]
+  n531["TAXIS_STEP3_5MON_AVG_REV"]
+  n530 -->|1005 LOAD_REPLACE| n531
+  n532["TAXIS_STEP4_FX_BOOST_V"]
+  n533["TAXIS_STEP4_FX_BOOST"]
+  n532 -->|1006 LOAD_REPLACE| n533
+  n534["TAXIS_STEP5_5MON_BOOST_REV_V"]
+  n535["TAXIS_STEP5_5MON_BOOST_REV"]
+  n534 -->|1007 LOAD_REPLACE| n535
+  style n525 fill:#e8f5e9,stroke:#2e7d32
+  style n533 fill:#e8f5e9,stroke:#2e7d32
+  style n526 fill:#e3f2fd,stroke:#1565c0
+  style n528 fill:#e3f2fd,stroke:#1565c0
+  style n522 fill:#e3f2fd,stroke:#1565c0
+  style n530 fill:#e3f2fd,stroke:#1565c0
+  style n532 fill:#e3f2fd,stroke:#1565c0
+  style n527 fill:#e8f5e9,stroke:#2e7d32
+  style n531 fill:#e8f5e9,stroke:#2e7d32
+  style n534 fill:#e3f2fd,stroke:#1565c0
+  style n524 fill:#e3f2fd,stroke:#1565c0
+  style n535 fill:#e8f5e9,stroke:#2e7d32
+  style n523 fill:#e8f5e9,stroke:#2e7d32
+  style n529 fill:#e8f5e9,stroke:#2e7d32

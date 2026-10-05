@@ -1,0 +1,22 @@
+flowchart LR
+  n160["STG_XCEPT_S1_V"]
+  n161["STG_XCEPT_S1"]
+  n160 -->|118 LOAD_REPLACE| n161
+  n162["STG_XCEPT_S2_V"]
+  n163["STG_XCEPT_S2"]
+  n162 -->|119 LOAD_REPLACE| n163
+  n164["STG_XCEPT_S3_V"]
+  n165["STG_XCEPT_S3"]
+  n164 -->|120 LOAD_REPLACE| n165
+  n166["SCD_XCEPT"]
+  n165 -.->|121 UPDATE| n166
+  n167["APP_SCD_XCEPT_V"]
+  n167 -->|122 LOAD_APPEND| n166
+  style n166 fill:#e8f5e9,stroke:#2e7d32
+  style n160 fill:#e3f2fd,stroke:#1565c0
+  style n161 fill:#e8f5e9,stroke:#2e7d32
+  style n162 fill:#e3f2fd,stroke:#1565c0
+  style n164 fill:#e3f2fd,stroke:#1565c0
+  style n163 fill:#e8f5e9,stroke:#2e7d32
+  style n167 fill:#e3f2fd,stroke:#1565c0
+  style n165 fill:#fff8e1,stroke:#f9a825

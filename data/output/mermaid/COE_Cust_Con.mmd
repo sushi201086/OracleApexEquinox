@@ -1,0 +1,32 @@
+flowchart LR
+  n365["RPT_BKG_CUST_CON_V"]
+  n366["RPT_BKG_CUST_CON"]
+  n365 -->|198 LOAD_KEYED| n366
+  n138["WEB_COMP_TCV_ACV_S1_V"]
+  n139["WEB_COMP_TCV_ACV_S1"]
+  n138 -->|199 LOAD_REPLACE| n139
+  n367["RPT_BKG_CUST_CON_S1_V"]
+  n368["RPT_BKG_CUST_CON_S1"]
+  n367 -->|200 LOAD_KEYED| n368
+  n369["RPT_BKG_CUST_CON_S2_V"]
+  n370["RPT_BKG_CUST_CON_S2"]
+  n369 -->|201 LOAD_KEYED| n370
+  n371["RPT_COECUSTCON_STATUS_V"]
+  n372["RPT_COECUSTCON_STATUS"]
+  n371 -->|10007 LOAD_REPLACE| n372
+  n373["BOOKINGS.SEND_COECUSTCON_STATUS_EMAIL"]
+  n374["STATUS EMAIL"]
+  n373 -->|10008 PLSQL_CALL| n374
+  n372 -->|10008 PLSQL_CALL| n374
+  style n365 fill:#e3f2fd,stroke:#1565c0
+  style n370 fill:#e8f5e9,stroke:#2e7d32
+  style n371 fill:#e3f2fd,stroke:#1565c0
+  style n372 fill:#fff8e1,stroke:#f9a825
+  style n373 fill:#e3f2fd,stroke:#1565c0
+  style n374 fill:#e8f5e9,stroke:#2e7d32
+  style n138 fill:#e3f2fd,stroke:#1565c0
+  style n367 fill:#e3f2fd,stroke:#1565c0
+  style n139 fill:#e8f5e9,stroke:#2e7d32
+  style n368 fill:#e8f5e9,stroke:#2e7d32
+  style n369 fill:#e3f2fd,stroke:#1565c0
+  style n366 fill:#e8f5e9,stroke:#2e7d32

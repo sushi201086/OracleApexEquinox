@@ -1,0 +1,152 @@
+flowchart LR
+  n260["STG_DL_PRICING_S1_V"]
+  n261["STG_DL_PRICING_S1"]
+  n260 -->|202 LOAD_REPLACE| n261
+  n262["STG_DL_PRICING_S2_V"]
+  n263["STG_DL_PRICING_S2"]
+  n262 -->|203 LOAD_REPLACE| n263
+  n264["STG_DL_PRICING_S3_V"]
+  n265["STG_DL_PRICING_S3"]
+  n264 -->|204 LOAD_REPLACE| n265
+  n266["STG_DL_PRICING_S4_V"]
+  n267["STG_DL_PRICING_S4"]
+  n266 -->|205 LOAD_REPLACE| n267
+  n268["STG_DL_REG_CURR_MISMATCH_S1_V"]
+  n269["STG_DL_REG_CURR_MISMATCH_S1"]
+  n268 -->|206 LOAD_REPLACE| n269
+  n270["STG_DL_REG_CURR_MISMATCH_S2_V"]
+  n271["STG_DL_REG_CURR_MISMATCH_S2"]
+  n270 -->|207 LOAD_REPLACE| n271
+  n272["STG_DL_REG_CURR_MISMATCH_S3_V"]
+  n273["STG_DL_REG_CURR_MISMATCH_S3"]
+  n272 -->|208 LOAD_REPLACE| n273
+  n274["STG_DL_REG_CURR_MISMATCH_S4_V"]
+  n275["STG_DL_REG_CURR_MISMATCH_S4"]
+  n274 -->|209 LOAD_REPLACE| n275
+  n276["APP_DL_REG_CURR_MISMATCH_HST_V"]
+  n277["STG_DL_REG_CURR_MISMATCH_HST"]
+  n276 -->|210 LOAD_APPEND| n277
+  n278["STG_DL_DUP_CON_S1_V"]
+  n279["STG_DL_DUP_CON_S1"]
+  n278 -->|211 LOAD_REPLACE| n279
+  n280["STG_DL_DUP_CON_S2_V"]
+  n281["STG_DL_DUP_CON_S2"]
+  n280 -->|212 LOAD_REPLACE| n281
+  n282["STG_DL_DUP_DBLCNT_S1_V"]
+  n283["STG_DL_DUP_DBLCNT_S1"]
+  n282 -->|213 LOAD_REPLACE| n283
+  n284["STG_DL_DUP_DBLCNT_S2_V"]
+  n285["STG_DL_DUP_DBLCNT_S2"]
+  n284 -->|214 LOAD_REPLACE| n285
+  n286["STG_DL_MISC_DTL_S1_V"]
+  n287["STG_DL_MISC_DTL_S1"]
+  n286 -->|215 LOAD_REPLACE| n287
+  n288["STG_DL_MISC_DTL_S2_V"]
+  n289["STG_DL_MISC_DTL_S2"]
+  n288 -->|216 LOAD_REPLACE| n289
+  n290["STG_DL_MISC_HDR_S1_V"]
+  n291["STG_DL_MISC_HDR_S1"]
+  n290 -->|217 LOAD_REPLACE| n291
+  n292["STG_DL_MISC_HDR_S2_V"]
+  n293["STG_DL_MISC_HDR_S2"]
+  n292 -->|218 LOAD_REPLACE| n293
+  n294["STG_DL_CON_NONCOTERM_S1_V"]
+  n295["STG_DL_CON_NONCOTERM_S1"]
+  n294 -->|219 LOAD_REPLACE| n295
+  n296["STG_DL_CON_NONCOTERM_S2_V"]
+  n297["STG_DL_CON_NONCOTERM_S2"]
+  n296 -->|220 LOAD_REPLACE| n297
+  n298["STG_DL_ALIGN_S1_V"]
+  n299["STG_DL_ALIGN_S1"]
+  n298 -->|221 LOAD_REPLACE| n299
+  n300["STG_DL_ALIGN_S2_V"]
+  n301["STG_DL_ALIGN_S2"]
+  n300 -->|222 LOAD_REPLACE| n301
+  n302["STG_DL_WHOLESALE_REGS_S1_V"]
+  n303["STG_DL_WHOLESALE_REGS_S1"]
+  n302 -->|223 LOAD_REPLACE| n303
+  n304["STG_DL_WHOLESALE_REGS_S2_V"]
+  n305["STG_DL_WHOLESALE_REGS_S2"]
+  n304 -->|224 LOAD_REPLACE| n305
+  n306["STG_DL_INV_CHILD_CONS_S1_V"]
+  n307["STG_DL_INV_CHILD_CONS_S1"]
+  n306 -->|225 LOAD_REPLACE| n307
+  n308["STG_DL_INV_CHILD_CONS_S2_V"]
+  n309["STG_DL_INV_CHILD_CONS_S2"]
+  n308 -->|226 LOAD_REPLACE| n309
+  n310["STG_DL_INTERNAL_INV_S1_V"]
+  n311["STG_DL_INTERNAL_INV_S1"]
+  n310 -->|227 LOAD_REPLACE| n311
+  n312["STG_DL_INTERNAL_INV_S2_V"]
+  n313["STG_DL_INTERNAL_INV_S2"]
+  n312 -->|228 LOAD_REPLACE| n313
+  n314["STG_EMAIL_DL_S1_V"]
+  n315["STG_EMAIL_DL_S1"]
+  n314 -->|229 LOAD_REPLACE| n315
+  n316["CON_DL.SEND_CON_UPDATES"]
+  n317["EMAILS"]
+  n316 -->|230 PLSQL_CALL| n317
+  n314 -->|230 PLSQL_CALL| n317
+  n318["APP_SNAP_DL_ALERTS_V"]
+  n319["SNAP_DL_ALERTS"]
+  n318 -->|231 LOAD_KEYED| n319
+  style n273 fill:#e8f5e9,stroke:#2e7d32
+  style n286 fill:#e3f2fd,stroke:#1565c0
+  style n263 fill:#e8f5e9,stroke:#2e7d32
+  style n295 fill:#e8f5e9,stroke:#2e7d32
+  style n261 fill:#e8f5e9,stroke:#2e7d32
+  style n282 fill:#e3f2fd,stroke:#1565c0
+  style n266 fill:#e3f2fd,stroke:#1565c0
+  style n285 fill:#e8f5e9,stroke:#2e7d32
+  style n312 fill:#e3f2fd,stroke:#1565c0
+  style n303 fill:#e8f5e9,stroke:#2e7d32
+  style n310 fill:#e3f2fd,stroke:#1565c0
+  style n264 fill:#e3f2fd,stroke:#1565c0
+  style n319 fill:#e8f5e9,stroke:#2e7d32
+  style n299 fill:#e8f5e9,stroke:#2e7d32
+  style n296 fill:#e3f2fd,stroke:#1565c0
+  style n306 fill:#e3f2fd,stroke:#1565c0
+  style n265 fill:#e8f5e9,stroke:#2e7d32
+  style n300 fill:#e3f2fd,stroke:#1565c0
+  style n313 fill:#e8f5e9,stroke:#2e7d32
+  style n281 fill:#e8f5e9,stroke:#2e7d32
+  style n301 fill:#e8f5e9,stroke:#2e7d32
+  style n298 fill:#e3f2fd,stroke:#1565c0
+  style n280 fill:#e3f2fd,stroke:#1565c0
+  style n274 fill:#e3f2fd,stroke:#1565c0
+  style n291 fill:#e8f5e9,stroke:#2e7d32
+  style n290 fill:#e3f2fd,stroke:#1565c0
+  style n308 fill:#e3f2fd,stroke:#1565c0
+  style n288 fill:#e3f2fd,stroke:#1565c0
+  style n317 fill:#e8f5e9,stroke:#2e7d32
+  style n275 fill:#e8f5e9,stroke:#2e7d32
+  style n292 fill:#e3f2fd,stroke:#1565c0
+  style n314 fill:#e3f2fd,stroke:#1565c0
+  style n305 fill:#e8f5e9,stroke:#2e7d32
+  style n309 fill:#e8f5e9,stroke:#2e7d32
+  style n283 fill:#e8f5e9,stroke:#2e7d32
+  style n268 fill:#e3f2fd,stroke:#1565c0
+  style n304 fill:#e3f2fd,stroke:#1565c0
+  style n293 fill:#e8f5e9,stroke:#2e7d32
+  style n315 fill:#e8f5e9,stroke:#2e7d32
+  style n270 fill:#e3f2fd,stroke:#1565c0
+  style n276 fill:#e3f2fd,stroke:#1565c0
+  style n278 fill:#e3f2fd,stroke:#1565c0
+  style n269 fill:#e8f5e9,stroke:#2e7d32
+  style n289 fill:#e8f5e9,stroke:#2e7d32
+  style n284 fill:#e3f2fd,stroke:#1565c0
+  style n294 fill:#e3f2fd,stroke:#1565c0
+  style n302 fill:#e3f2fd,stroke:#1565c0
+  style n311 fill:#e8f5e9,stroke:#2e7d32
+  style n316 fill:#e3f2fd,stroke:#1565c0
+  style n318 fill:#e3f2fd,stroke:#1565c0
+  style n272 fill:#e3f2fd,stroke:#1565c0
+  style n307 fill:#e8f5e9,stroke:#2e7d32
+  style n262 fill:#e3f2fd,stroke:#1565c0
+  style n279 fill:#e8f5e9,stroke:#2e7d32
+  style n267 fill:#e8f5e9,stroke:#2e7d32
+  style n271 fill:#e8f5e9,stroke:#2e7d32
+  style n297 fill:#e8f5e9,stroke:#2e7d32
+  style n287 fill:#e8f5e9,stroke:#2e7d32
+  style n277 fill:#e8f5e9,stroke:#2e7d32
+  style n260 fill:#e3f2fd,stroke:#1565c0

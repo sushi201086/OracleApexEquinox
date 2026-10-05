@@ -1,0 +1,24 @@
+flowchart LR
+  n104["LKP_A_PULL_CON_SNAPDATE_OVR_V"]
+  n105["LKP_A_PULL_CON_SNAPDATE_OVR"]
+  n104 -->|81 LOAD_REPLACE| n105
+  n106["LKP_A_PULL_DAILY_LIST_ACCTS_V"]
+  n107["LKP_A_PULL_DAILY_LIST_ACCTS"]
+  n106 -->|89 LOAD_REPLACE| n107
+  n118["SCD_CON_DTL_OVR_PULL_LCK_V"]
+  n119["SCD_CON_DTL_OVR_PULL_LCK"]
+  n118 -->|96 LOAD_REPLACE| n119
+  n5["LKP_A_PULL_VAR"]
+  n168["SNAP_BKG"]
+  n5 -.->|124 DELETE| n168
+  n169["APP_SNAP_BKG_V"]
+  n169 -->|125 INSERT_SELECT| n168
+  style n118 fill:#e3f2fd,stroke:#1565c0
+  style n107 fill:#e8f5e9,stroke:#2e7d32
+  style n168 fill:#e8f5e9,stroke:#2e7d32
+  style n104 fill:#e3f2fd,stroke:#1565c0
+  style n119 fill:#e8f5e9,stroke:#2e7d32
+  style n105 fill:#e8f5e9,stroke:#2e7d32
+  style n169 fill:#e3f2fd,stroke:#1565c0
+  style n106 fill:#e3f2fd,stroke:#1565c0
+  style n5 fill:#fff8e1,stroke:#f9a825

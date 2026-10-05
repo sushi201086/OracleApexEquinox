@@ -1,0 +1,735 @@
+JOB_NUM,GROUP_NAME,GROUP_POS,GROUP_PATH
+1,ALL,1,ALL
+1,Daily Load,2,ALL|Daily Load
+1,Reset Pull,3,ALL|Daily Load|Reset Pull
+2,ALL,1,ALL
+2,Daily Load,2,ALL|Daily Load
+2,Reset Pull,3,ALL|Daily Load|Reset Pull
+3,ALL,1,ALL
+3,Daily Load,2,ALL|Daily Load
+3,Reset Pull,3,ALL|Daily Load|Reset Pull
+4,ALL,1,ALL
+4,Daily Load,2,ALL|Daily Load
+4,Reset Pull,3,ALL|Daily Load|Reset Pull
+5,ALL,1,ALL
+5,Daily Load,2,ALL|Daily Load
+5,Reset Pull,3,ALL|Daily Load|Reset Pull
+6,ALL,1,ALL
+6,Daily Load,2,ALL|Daily Load
+6,Reset Pull,3,ALL|Daily Load|Reset Pull
+7,ALL,1,ALL
+7,Daily Load,2,ALL|Daily Load
+7,Reset Pull,3,ALL|Daily Load|Reset Pull
+8,ALL,1,ALL
+8,Daily Load,2,ALL|Daily Load
+8,Reset Pull,3,ALL|Daily Load|Reset Pull
+9,ALL,1,ALL
+9,Daily Load,2,ALL|Daily Load
+9,Reset Pull,3,ALL|Daily Load|Reset Pull
+10,ALL,1,ALL
+10,Daily Load,2,ALL|Daily Load
+10,Reset Pull,3,ALL|Daily Load|Reset Pull
+11,ALL,1,ALL
+11,Daily Load,2,ALL|Daily Load
+11,Reset Pull,3,ALL|Daily Load|Reset Pull
+12,ALL,1,ALL
+12,Daily Load,2,ALL|Daily Load
+12,Reset Pull,3,ALL|Daily Load|Reset Pull
+12,EOM Compare,4,ALL|Daily Load|Reset Pull|EOM Compare
+13,Custom Lines,1,Custom Lines
+14,Custom Lines,1,Custom Lines
+15,ALL,1,ALL
+15,Daily Load,2,ALL|Daily Load
+16,ALL,1,ALL
+16,Daily Load,2,ALL|Daily Load
+17,ALL,1,ALL
+17,Daily Load,2,ALL|Daily Load
+18,ALL,1,ALL
+18,Daily Load,2,ALL|Daily Load
+19,ALL,1,ALL
+19,Daily Load,2,ALL|Daily Load
+20,ALL,1,ALL
+20,Daily Load,2,ALL|Daily Load
+21,ALL,1,ALL
+21,Daily Load,2,ALL|Daily Load
+22,ALL,1,ALL
+22,Daily Load,2,ALL|Daily Load
+23,ALL,1,ALL
+23,Daily Load,2,ALL|Daily Load
+24,ALL,1,ALL
+24,Daily Load,2,ALL|Daily Load
+25,ALL,1,ALL
+25,Daily Load,2,ALL|Daily Load
+26,ALL,1,ALL
+26,Daily Load,2,ALL|Daily Load
+27,ALL,1,ALL
+27,Daily Load,2,ALL|Daily Load
+28,ALL,1,ALL
+28,Daily Load,2,ALL|Daily Load
+29,ALL,1,ALL
+29,Daily Load,2,ALL|Daily Load
+30,ALL,1,ALL
+30,Daily Load,2,ALL|Daily Load
+31,ALL,1,ALL
+31,Daily Load,2,ALL|Daily Load
+32,ALL,1,ALL
+32,Daily Load,2,ALL|Daily Load
+33,ALL,1,ALL
+33,Daily Load,2,ALL|Daily Load
+34,ALL,1,ALL
+34,Daily Load,2,ALL|Daily Load
+35,ALL,1,ALL
+35,Daily Load,2,ALL|Daily Load
+36,ALL,1,ALL
+36,Daily Load,2,ALL|Daily Load
+37,ALL,1,ALL
+37,Daily Load,2,ALL|Daily Load
+38,ALL,1,ALL
+38,Daily Load,2,ALL|Daily Load
+39,ALL,1,ALL
+39,Daily Load,2,ALL|Daily Load
+40,ALL,1,ALL
+40,Daily Load,2,ALL|Daily Load
+41,ALL,1,ALL
+41,Daily Load,2,ALL|Daily Load
+42,ALL,1,ALL
+42,Daily Load,2,ALL|Daily Load
+43,ALL,1,ALL
+43,Daily Load,2,ALL|Daily Load
+44,ALL,1,ALL
+44,Daily Load,2,ALL|Daily Load
+45,ALL,1,ALL
+45,Daily Load,2,ALL|Daily Load
+46,ALL,1,ALL
+46,Daily Load,2,ALL|Daily Load
+47,ALL,1,ALL
+47,Daily Load,2,ALL|Daily Load
+48,ALL,1,ALL
+48,Daily Load,2,ALL|Daily Load
+49,ALL,1,ALL
+49,Daily Load,2,ALL|Daily Load
+50,ALL,1,ALL
+50,Daily Load,2,ALL|Daily Load
+51,ALL,1,ALL
+51,Daily Load,2,ALL|Daily Load
+52,ALL,1,ALL
+52,Daily Load,2,ALL|Daily Load
+53,ALL,1,ALL
+53,Daily Load,2,ALL|Daily Load
+54,ALL,1,ALL
+54,Daily Load,2,ALL|Daily Load
+55,ALL,1,ALL
+55,Daily Load,2,ALL|Daily Load
+56,ALL,1,ALL
+56,Daily Load,2,ALL|Daily Load
+57,ALL,1,ALL
+57,Daily Load,2,ALL|Daily Load
+58,ALL,1,ALL
+58,Daily Load,2,ALL|Daily Load
+59,ALL,1,ALL
+59,Daily Load,2,ALL|Daily Load
+60,ALL,1,ALL
+60,Daily Load,2,ALL|Daily Load
+61,ALL,1,ALL
+61,Daily Load,2,ALL|Daily Load
+62,ALL,1,ALL
+62,Daily Load,2,ALL|Daily Load
+63,ALL,1,ALL
+63,Daily Load,2,ALL|Daily Load
+64,ALL,1,ALL
+64,Daily Load,2,ALL|Daily Load
+65,ALL,1,ALL
+65,Daily Load,2,ALL|Daily Load
+66,ALL,1,ALL
+66,Daily Load,2,ALL|Daily Load
+67,ALL,1,ALL
+67,Daily Load,2,ALL|Daily Load
+68,ALL,1,ALL
+68,Daily Load,2,ALL|Daily Load
+69,ALL,1,ALL
+69,Daily Load,2,ALL|Daily Load
+70,ALL,1,ALL
+70,Daily Load,2,ALL|Daily Load
+71,ALL,1,ALL
+71,Daily Load,2,ALL|Daily Load
+72,ALL,1,ALL
+72,Daily Load,2,ALL|Daily Load
+73,ALL,1,ALL
+73,Daily Load,2,ALL|Daily Load
+74,ALL,1,ALL
+74,Daily Load,2,ALL|Daily Load
+75,ALL,1,ALL
+75,Daily Load,2,ALL|Daily Load
+75,Daily List,3,ALL|Daily Load|Daily List
+76,ALL,1,ALL
+76,Daily Load,2,ALL|Daily Load
+76,Daily List,3,ALL|Daily Load|Daily List
+77,ALL,1,ALL
+77,Daily Load,2,ALL|Daily Load
+77,Daily List,3,ALL|Daily Load|Daily List
+78,ALL,1,ALL
+78,Excel Pull,2,ALL|Excel Pull
+79,ALL,1,ALL
+79,Excel Pull,2,ALL|Excel Pull
+80,ALL,1,ALL
+80,Excel Pull,2,ALL|Excel Pull
+81,ALL,1,ALL
+81,Excel Pull,2,ALL|Excel Pull
+81,EOM Snap,3,ALL|Excel Pull|EOM Snap
+82,Excel Pull,1,Excel Pull
+82,EOM Compare,2,Excel Pull|EOM Compare
+83,Excel Pull,1,Excel Pull
+83,Daily List,2,Excel Pull|Daily List
+83,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+83,Opp Acct Assign,4,Excel Pull|Daily List|Snap Daily List|Opp Acct Assign
+84,Excel Pull,1,Excel Pull
+84,Daily List,2,Excel Pull|Daily List
+84,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+85,Excel Pull,1,Excel Pull
+85,Daily List,2,Excel Pull|Daily List
+85,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+86,Excel Pull,1,Excel Pull
+86,Daily List,2,Excel Pull|Daily List
+86,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+87,Excel Pull,1,Excel Pull
+87,Daily List,2,Excel Pull|Daily List
+87,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+88,Excel Pull,1,Excel Pull
+88,Daily List,2,Excel Pull|Daily List
+88,Snap Daily List,3,Excel Pull|Daily List|Snap Daily List
+89,ALL,1,ALL
+89,Excel Pull,2,ALL|Excel Pull
+89,EOM Snap,3,ALL|Excel Pull|EOM Snap
+89,Daily List,4,ALL|Excel Pull|EOM Snap|Daily List
+90,Snap Daily List,1,Snap Daily List
+90,Excel Pull,2,Snap Daily List|Excel Pull
+91,ALL,1,ALL
+91,Excel Pull,2,ALL|Excel Pull
+92,ALL,1,ALL
+92,Excel Pull,2,ALL|Excel Pull
+93,ALL,1,ALL
+93,Excel Pull,2,ALL|Excel Pull
+94,ALL,1,ALL
+94,Excel Pull,2,ALL|Excel Pull
+95,ALL,1,ALL
+95,Excel Pull,2,ALL|Excel Pull
+96,ALL,1,ALL
+96,Excel Pull,2,ALL|Excel Pull
+96,EOM Snap,3,ALL|Excel Pull|EOM Snap
+97,ALL,1,ALL
+97,Excel Pull,2,ALL|Excel Pull
+98,ALL,1,ALL
+98,Excel Pull,2,ALL|Excel Pull
+99,ALL,1,ALL
+99,Excel Pull,2,ALL|Excel Pull
+100,ALL,1,ALL
+100,Excel Pull,2,ALL|Excel Pull
+101,ALL,1,ALL
+101,Excel Pull,2,ALL|Excel Pull
+102,ALL,1,ALL
+102,Excel Pull,2,ALL|Excel Pull
+103,ALL,1,ALL
+103,Excel Pull,2,ALL|Excel Pull
+104,ALL,1,ALL
+104,Excel Pull,2,ALL|Excel Pull
+105,ALL,1,ALL
+105,Excel Pull,2,ALL|Excel Pull
+106,ALL,1,ALL
+106,Excel Pull,2,ALL|Excel Pull
+107,ALL,1,ALL
+107,Excel Pull,2,ALL|Excel Pull
+108,ALL,1,ALL
+108,Excel Pull,2,ALL|Excel Pull
+109,ALL,1,ALL
+109,Excel Pull,2,ALL|Excel Pull
+110,ALL,1,ALL
+110,Excel Pull,2,ALL|Excel Pull
+111,ALL,1,ALL
+111,Excel Pull,2,ALL|Excel Pull
+112,ALL,1,ALL
+112,Excel Pull,2,ALL|Excel Pull
+113,ALL,1,ALL
+113,Excel Pull,2,ALL|Excel Pull
+114,ALL,1,ALL
+114,Excel Pull,2,ALL|Excel Pull
+115,ALL,1,ALL
+115,Excel Pull,2,ALL|Excel Pull
+116,ALL,1,ALL
+116,Excel Pull,2,ALL|Excel Pull
+117,ALL,1,ALL
+117,Excel Pull,2,ALL|Excel Pull
+118,ALL,1,ALL
+118,Excel Pull,2,ALL|Excel Pull
+118,Xcept,3,ALL|Excel Pull|Xcept
+119,ALL,1,ALL
+119,Excel Pull,2,ALL|Excel Pull
+119,Xcept,3,ALL|Excel Pull|Xcept
+120,ALL,1,ALL
+120,Excel Pull,2,ALL|Excel Pull
+120,Xcept,3,ALL|Excel Pull|Xcept
+121,ALL,1,ALL
+121,Excel Pull,2,ALL|Excel Pull
+121,Xcept,3,ALL|Excel Pull|Xcept
+122,ALL,1,ALL
+122,Excel Pull,2,ALL|Excel Pull
+122,Xcept,3,ALL|Excel Pull|Xcept
+123,ALL,1,ALL
+123,EOM Snap,2,ALL|EOM Snap
+124,ALL,1,ALL
+124,EOM Snap,2,ALL|EOM Snap
+125,ALL,1,ALL
+125,EOM Snap,2,ALL|EOM Snap
+126,ALL,1,ALL
+126,EOM Compare,2,ALL|EOM Compare
+127,ALL,1,ALL
+127,EOM Compare,2,ALL|EOM Compare
+128,ALL,1,ALL
+128,EOM Compare,2,ALL|EOM Compare
+129,ALL,1,ALL
+129,EOM Compare,2,ALL|EOM Compare
+130,ALL,1,ALL
+130,EOM Compare,2,ALL|EOM Compare
+131,ALL,1,ALL
+131,EOM Compare,2,ALL|EOM Compare
+132,ALL,1,ALL
+132,EOM Compare,2,ALL|EOM Compare
+133,ALL,1,ALL
+133,EOM Compare,2,ALL|EOM Compare
+134,ALL,1,ALL
+134,EOM Compare,2,ALL|EOM Compare
+135,ALL,1,ALL
+135,EOM Compare,2,ALL|EOM Compare
+136,ALL,1,ALL
+136,EOM Compare,2,ALL|EOM Compare
+137,ALL,1,ALL
+137,EOM Compare,2,ALL|EOM Compare
+138,ALL,1,ALL
+138,EOM Compare,2,ALL|EOM Compare
+139,ALL,1,ALL
+139,EOM Compare,2,ALL|EOM Compare
+140,ALL,1,ALL
+140,EOM Compare,2,ALL|EOM Compare
+141,ALL,1,ALL
+141,EOM Compare,2,ALL|EOM Compare
+142,ALL,1,ALL
+142,EOM Compare,2,ALL|EOM Compare
+143,ALL,1,ALL
+143,EOM Compare,2,ALL|EOM Compare
+144,ALL,1,ALL
+144,EOM Compare,2,ALL|EOM Compare
+145,ALL,1,ALL
+145,EOM Compare,2,ALL|EOM Compare
+146,ALL,1,ALL
+146,EOM Compare,2,ALL|EOM Compare
+147,ALL,1,ALL
+147,EOM Compare,2,ALL|EOM Compare
+148,ALL,1,ALL
+148,EOM Compare,2,ALL|EOM Compare
+149,ALL,1,ALL
+149,EOM Compare,2,ALL|EOM Compare
+150,ALL,1,ALL
+150,EOM Compare,2,ALL|EOM Compare
+151,ALL,1,ALL
+151,EOM Compare,2,ALL|EOM Compare
+152,ALL,1,ALL
+152,EOM Compare,2,ALL|EOM Compare
+153,ALL,1,ALL
+153,EOM Compare,2,ALL|EOM Compare
+154,ALL,1,ALL
+154,EOM Compare,2,ALL|EOM Compare
+155,ALL,1,ALL
+155,EOM Compare,2,ALL|EOM Compare
+156,ALL,1,ALL
+156,EOM Compare,2,ALL|EOM Compare
+157,ALL,1,ALL
+157,EOM Compare,2,ALL|EOM Compare
+158,ALL,1,ALL
+158,EOM Compare,2,ALL|EOM Compare
+159,ALL,1,ALL
+159,EOM Compare,2,ALL|EOM Compare
+160,ALL,1,ALL
+160,EOM Compare,2,ALL|EOM Compare
+161,ALL,1,ALL
+161,EOM Compare,2,ALL|EOM Compare
+162,ALL,1,ALL
+162,EOM Compare,2,ALL|EOM Compare
+162,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+163,ALL,1,ALL
+163,EOM Compare,2,ALL|EOM Compare
+163,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+164,ALL,1,ALL
+164,EOM Compare,2,ALL|EOM Compare
+164,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+165,ALL,1,ALL
+165,EOM Compare,2,ALL|EOM Compare
+165,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+166,ALL,1,ALL
+166,EOM Compare,2,ALL|EOM Compare
+166,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+167,ALL,1,ALL
+167,EOM Compare,2,ALL|EOM Compare
+167,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+168,ALL,1,ALL
+168,EOM Compare,2,ALL|EOM Compare
+168,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+169,ALL,1,ALL
+169,EOM Compare,2,ALL|EOM Compare
+169,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+170,ALL,1,ALL
+170,EOM Compare,2,ALL|EOM Compare
+170,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+171,ALL,1,ALL
+171,EOM Compare,2,ALL|EOM Compare
+171,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+172,ALL,1,ALL
+172,EOM Compare,2,ALL|EOM Compare
+172,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+173,ALL,1,ALL
+173,EOM Compare,2,ALL|EOM Compare
+173,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+174,ALL,1,ALL
+174,EOM Compare,2,ALL|EOM Compare
+174,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+175,ALL,1,ALL
+175,EOM Compare,2,ALL|EOM Compare
+175,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+176,ALL,1,ALL
+176,EOM Compare,2,ALL|EOM Compare
+176,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+177,ALL,1,ALL
+177,EOM Compare,2,ALL|EOM Compare
+177,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+178,ALL,1,ALL
+178,EOM Compare,2,ALL|EOM Compare
+178,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+179,ALL,1,ALL
+179,EOM Compare,2,ALL|EOM Compare
+179,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+180,ALL,1,ALL
+180,EOM Compare,2,ALL|EOM Compare
+180,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+181,ALL,1,ALL
+181,EOM Compare,2,ALL|EOM Compare
+181,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+182,ALL,1,ALL
+182,EOM Compare,2,ALL|EOM Compare
+182,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+183,EMP DGRAT,1,EMP DGRAT
+184,Opp Acct Assign,1,Opp Acct Assign
+185,Opp Acct Assign,1,Opp Acct Assign
+186,Opp Acct Assign,1,Opp Acct Assign
+187,Opp Acct Assign,1,Opp Acct Assign
+188,Opp Acct Assign,1,Opp Acct Assign
+189,Opp Acct Assign,1,Opp Acct Assign
+190,Opp Acct Assign,1,Opp Acct Assign
+191,Opp Acct Assign,1,Opp Acct Assign
+192,Opp Acct Assign,1,Opp Acct Assign
+193,Opp Acct Assign,1,Opp Acct Assign
+194,Opp Acct Assign,1,Opp Acct Assign
+195,Opp Acct Assign,1,Opp Acct Assign
+196,Opp Acct Assign,1,Opp Acct Assign
+197,Opp Acct Assign,1,Opp Acct Assign
+198,COE Cust Con,1,COE Cust Con
+199,COE Cust Con,1,COE Cust Con
+200,COE Cust Con,1,COE Cust Con
+201,COE Cust Con,1,COE Cust Con
+202,ALL,1,ALL
+202,Con Deep Learn,2,ALL|Con Deep Learn
+202,Daily Load,3,ALL|Con Deep Learn|Daily Load
+203,ALL,1,ALL
+203,Con Deep Learn,2,ALL|Con Deep Learn
+203,Daily Load,3,ALL|Con Deep Learn|Daily Load
+204,ALL,1,ALL
+204,Con Deep Learn,2,ALL|Con Deep Learn
+204,Daily Load,3,ALL|Con Deep Learn|Daily Load
+205,ALL,1,ALL
+205,Con Deep Learn,2,ALL|Con Deep Learn
+205,Daily Load,3,ALL|Con Deep Learn|Daily Load
+206,ALL,1,ALL
+206,Con Deep Learn,2,ALL|Con Deep Learn
+206,Daily Load,3,ALL|Con Deep Learn|Daily Load
+207,ALL,1,ALL
+207,Con Deep Learn,2,ALL|Con Deep Learn
+207,Daily Load,3,ALL|Con Deep Learn|Daily Load
+208,ALL,1,ALL
+208,Con Deep Learn,2,ALL|Con Deep Learn
+208,Daily Load,3,ALL|Con Deep Learn|Daily Load
+209,ALL,1,ALL
+209,Con Deep Learn,2,ALL|Con Deep Learn
+209,Daily Load,3,ALL|Con Deep Learn|Daily Load
+210,ALL,1,ALL
+210,Con Deep Learn,2,ALL|Con Deep Learn
+210,Daily Load,3,ALL|Con Deep Learn|Daily Load
+211,ALL,1,ALL
+211,Con Deep Learn,2,ALL|Con Deep Learn
+211,Daily Load,3,ALL|Con Deep Learn|Daily Load
+212,ALL,1,ALL
+212,Con Deep Learn,2,ALL|Con Deep Learn
+212,Daily Load,3,ALL|Con Deep Learn|Daily Load
+213,ALL,1,ALL
+213,Con Deep Learn,2,ALL|Con Deep Learn
+213,Daily Load,3,ALL|Con Deep Learn|Daily Load
+214,ALL,1,ALL
+214,Con Deep Learn,2,ALL|Con Deep Learn
+214,Daily Load,3,ALL|Con Deep Learn|Daily Load
+215,ALL,1,ALL
+215,Con Deep Learn,2,ALL|Con Deep Learn
+215,Daily Load,3,ALL|Con Deep Learn|Daily Load
+216,ALL,1,ALL
+216,Con Deep Learn,2,ALL|Con Deep Learn
+216,Daily Load,3,ALL|Con Deep Learn|Daily Load
+217,ALL,1,ALL
+217,Con Deep Learn,2,ALL|Con Deep Learn
+217,Daily Load,3,ALL|Con Deep Learn|Daily Load
+218,ALL,1,ALL
+218,Con Deep Learn,2,ALL|Con Deep Learn
+218,Daily Load,3,ALL|Con Deep Learn|Daily Load
+219,ALL,1,ALL
+219,Con Deep Learn,2,ALL|Con Deep Learn
+219,Daily Load,3,ALL|Con Deep Learn|Daily Load
+220,ALL,1,ALL
+220,Con Deep Learn,2,ALL|Con Deep Learn
+220,Daily Load,3,ALL|Con Deep Learn|Daily Load
+221,ALL,1,ALL
+221,Con Deep Learn,2,ALL|Con Deep Learn
+221,Daily Load,3,ALL|Con Deep Learn|Daily Load
+222,ALL,1,ALL
+222,Con Deep Learn,2,ALL|Con Deep Learn
+222,Daily Load,3,ALL|Con Deep Learn|Daily Load
+223,ALL,1,ALL
+223,Con Deep Learn,2,ALL|Con Deep Learn
+223,Daily Load,3,ALL|Con Deep Learn|Daily Load
+224,ALL,1,ALL
+224,Con Deep Learn,2,ALL|Con Deep Learn
+224,Daily Load,3,ALL|Con Deep Learn|Daily Load
+225,ALL,1,ALL
+225,Con Deep Learn,2,ALL|Con Deep Learn
+225,Daily Load,3,ALL|Con Deep Learn|Daily Load
+226,ALL,1,ALL
+226,Con Deep Learn,2,ALL|Con Deep Learn
+226,Daily Load,3,ALL|Con Deep Learn|Daily Load
+227,ALL,1,ALL
+227,Con Deep Learn,2,ALL|Con Deep Learn
+227,Daily Load,3,ALL|Con Deep Learn|Daily Load
+228,ALL,1,ALL
+228,Con Deep Learn,2,ALL|Con Deep Learn
+228,Daily Load,3,ALL|Con Deep Learn|Daily Load
+229,ALL,1,ALL
+229,Con Deep Learn,2,ALL|Con Deep Learn
+229,Daily Load,3,ALL|Con Deep Learn|Daily Load
+230,ALL,1,ALL
+230,Con Deep Learn,2,ALL|Con Deep Learn
+230,Daily Load,3,ALL|Con Deep Learn|Daily Load
+231,ALL,1,ALL
+231,Con Deep Learn,2,ALL|Con Deep Learn
+231,Daily Load,3,ALL|Con Deep Learn|Daily Load
+232,ALL,1,ALL
+232,EOM Compare,2,ALL|EOM Compare
+232,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+233,ALL,1,ALL
+233,EOM Compare,2,ALL|EOM Compare
+234,ALL,1,ALL
+234,EOM Compare,2,ALL|EOM Compare
+235,ALL,1,ALL
+235,EOM Compare,2,ALL|EOM Compare
+236,ALL,1,ALL
+236,EOM Compare,2,ALL|EOM Compare
+237,ALL,1,ALL
+237,EOM Compare,2,ALL|EOM Compare
+238,ALL,1,ALL
+238,EOM Compare,2,ALL|EOM Compare
+238,Excel Pull,3,ALL|EOM Compare|Excel Pull
+239,ALL,1,ALL
+239,EOM Compare,2,ALL|EOM Compare
+239,Excel Pull,3,ALL|EOM Compare|Excel Pull
+240,ALL,1,ALL
+240,EOM Compare,2,ALL|EOM Compare
+240,Excel Pull,3,ALL|EOM Compare|Excel Pull
+241,ALL,1,ALL
+241,EOM Compare,2,ALL|EOM Compare
+241,Excel Pull,3,ALL|EOM Compare|Excel Pull
+242,ALL,1,ALL
+242,EOM Compare,2,ALL|EOM Compare
+242,Excel Pull,3,ALL|EOM Compare|Excel Pull
+243,ALL,1,ALL
+243,EOM Compare,2,ALL|EOM Compare
+243,Excel Pull,3,ALL|EOM Compare|Excel Pull
+244,ALL,1,ALL
+244,EOM Compare,2,ALL|EOM Compare
+244,Excel Pull,3,ALL|EOM Compare|Excel Pull
+245,EOM Compare,1,EOM Compare
+246,EOM Compare,1,EOM Compare
+247,EOM Compare,1,EOM Compare
+248,EOM Compare,1,EOM Compare
+249,EOM Compare,1,EOM Compare
+250,Edge Report,1,Edge Report
+251,Edge Report,1,Edge Report
+252,Edge Report,1,Edge Report
+253,Edge Report,1,Edge Report
+254,Edge Report,1,Edge Report
+255,Edge Report,1,Edge Report
+256,Edge Report,1,Edge Report
+257,Edge Report,1,Edge Report
+258,Edge Report,1,Edge Report
+259,New Month,1,New Month
+260,New Month,1,New Month
+261,New Month,1,New Month
+262,New Month,1,New Month
+263,New Month,1,New Month
+264,Refresh Alerts,1,Refresh Alerts
+265,Refresh Alerts,1,Refresh Alerts
+266,Refresh Alerts,1,Refresh Alerts
+267,Refresh Alerts,1,Refresh Alerts
+268,Refresh Alerts,1,Refresh Alerts
+269,Refresh Alerts,1,Refresh Alerts
+270,Refresh Alerts,1,Refresh Alerts
+271,Refresh Alerts,1,Refresh Alerts
+272,Refresh Alerts,1,Refresh Alerts
+273,Refresh Alerts,1,Refresh Alerts
+274,Refresh Alerts,1,Refresh Alerts
+275,Refresh Alerts,1,Refresh Alerts
+276,Refresh Alerts,1,Refresh Alerts
+277,Refresh Alerts,1,Refresh Alerts
+278,ALL,1,ALL
+278,EOM Compare,2,ALL|EOM Compare
+279,ALL,1,ALL
+279,EOM Compare,2,ALL|EOM Compare
+280,ALL,1,ALL
+280,EOM Compare,2,ALL|EOM Compare
+281,ALL,1,ALL
+281,EOM Compare,2,ALL|EOM Compare
+282,ALL,1,ALL
+282,EOM Compare,2,ALL|EOM Compare
+283,ALL,1,ALL
+283,EOM Compare,2,ALL|EOM Compare
+284,New Month,1,New Month
+285,Linode Rev Cust,1,Linode Rev Cust
+286,Linode Rev Cust,1,Linode Rev Cust
+287,Linode Rev Cust,1,Linode Rev Cust
+288,Linode Rev Cust,1,Linode Rev Cust
+289,Linode Rev Cust,1,Linode Rev Cust
+290,Linode Rev Cust,1,Linode Rev Cust
+291,Linode Rev Cust,1,Linode Rev Cust
+292,Linode Rev Cust,1,Linode Rev Cust
+293,Linode Rev Cust,1,Linode Rev Cust
+294,Linode Rev Cust,1,Linode Rev Cust
+295,Linode Rev Cust,1,Linode Rev Cust
+296,Churn Review,1,Churn Review
+297,Churn Review,1,Churn Review
+298,Churn Review,1,Churn Review
+299,Churn Review,1,Churn Review
+300,Churn Review,1,Churn Review
+301,Churn Review,1,Churn Review
+302,Churn Review,1,Churn Review
+303,Churn Review,1,Churn Review
+304,Churn Review,1,Churn Review
+305,Churn Review,1,Churn Review
+306,Churn Review,1,Churn Review
+307,ALL,1,ALL
+307,Daily Load,2,ALL|Daily Load
+307,Act Tracker,3,ALL|Daily Load|Act Tracker
+308,ALL,1,ALL
+308,Daily Load,2,ALL|Daily Load
+308,Act Tracker,3,ALL|Daily Load|Act Tracker
+309,New Month,1,New Month
+310,New Month,1,New Month
+311,EOM Compare,1,EOM Compare
+312,ALL,1,ALL
+312,New Year,2,ALL|New Year
+313,EOM Compare,1,EOM Compare
+314,WD Snap,1,WD Snap
+315,WD Snap,1,WD Snap
+316,WD Snap,1,WD Snap
+317,WD Snap,1,WD Snap
+318,WD Snap,1,WD Snap
+319,WD Snap,1,WD Snap
+320,WD Snap,1,WD Snap
+321,WD Snap,1,WD Snap
+322,WD Snap,1,WD Snap
+323,WD Snap,1,WD Snap
+324,WD Snap,1,WD Snap
+325,WD Snap,1,WD Snap
+326,WD Snap,1,WD Snap
+327,WD Snap,1,WD Snap
+328,WD Snap,1,WD Snap
+329,WD Snap,1,WD Snap
+330,WD Snap,1,WD Snap
+331,WD Snap,1,WD Snap
+332,WD Snap,1,WD Snap
+333,WD Snap,1,WD Snap
+334,WD Snap,1,WD Snap
+335,WD Snap,1,WD Snap
+336,WD Snap,1,WD Snap
+337,WD Snap,1,WD Snap
+338,WD Snap,1,WD Snap
+339,WD Snap,1,WD Snap
+340,WD Snap,1,WD Snap
+341,WD Snap,1,WD Snap
+342,WD Snap,1,WD Snap
+343,WD Snap,1,WD Snap
+344,WD Snap,1,WD Snap
+345,WD Snap,1,WD Snap
+346,WD Snap,1,WD Snap
+347,WD Snap,1,WD Snap
+348,WD Snap,1,WD Snap
+349,WD Snap,1,WD Snap
+350,WD Snap,1,WD Snap
+351,WD Snap,1,WD Snap
+352,WD Snap,1,WD Snap
+353,WD Snap,1,WD Snap
+354,WD Snap,1,WD Snap
+355,WD Snap,1,WD Snap
+356,WD Snap,1,WD Snap
+357,WD Snap,1,WD Snap
+358,WD Snap,1,WD Snap
+359,WD Snap,1,WD Snap
+360,WD Snap,1,WD Snap
+361,WD Snap,1,WD Snap
+362,WD Snap,1,WD Snap
+363,WD Snap,1,WD Snap
+364,WD Snap,1,WD Snap
+365,WD Snap,1,WD Snap
+366,WD Snap,1,WD Snap
+367,WD Snap,1,WD Snap
+368,WD Snap,1,WD Snap
+369,WD Snap,1,WD Snap
+370,WD Snap,1,WD Snap
+371,WD Snap,1,WD Snap
+372,WD Snap,1,WD Snap
+373,WD Snap,1,WD Snap
+374,WD Snap,1,WD Snap
+375,WD Snap,1,WD Snap
+376,WD Snap,1,WD Snap
+377,WD Snap,1,WD Snap
+378,Expired Contracts,1,Expired Contracts
+379,New Month,1,New Month
+380,New Month,1,New Month
+381,New Month,1,New Month
+382,New Month,1,New Month
+383,ALL,1,ALL
+383,EOM Compare,2,ALL|EOM Compare
+383,Swift Rep Gen,3,ALL|EOM Compare|Swift Rep Gen
+384,Expired Products,1,Expired Products
+385,ALL,1,ALL
+385,EOM Compare,2,ALL|EOM Compare
+1001,Taxis,1,Taxis
+1002,Taxis,1,Taxis
+1003,Taxis,1,Taxis
+1004,Taxis,1,Taxis
+1005,Taxis,1,Taxis
+1006,Taxis,1,Taxis
+1007,Taxis,1,Taxis
+1008,HYP REV PLN,1,HYP REV PLN
+1009,HYP REV PLN,1,HYP REV PLN
+1010,HYP REV PLN,1,HYP REV PLN
+1011,HYP REV PLN,1,HYP REV PLN
+1012,HYP REV PLN,1,HYP REV PLN
+1013,HYP REV PLN,1,HYP REV PLN
+10001,Daily Load,1,Daily Load
+10002,Daily Load,1,Daily Load
+10003,EOM Compare,1,EOM Compare
+10004,EOM Compare,1,EOM Compare
+10005,Excel Pull,1,Excel Pull
+10006,Excel Pull,1,Excel Pull
+10007,COE Cust Con,1,COE Cust Con
+10008,COE Cust Con,1,COE Cust Con

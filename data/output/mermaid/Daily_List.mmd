@@ -1,0 +1,30 @@
+flowchart LR
+  n101["STG_SCD_OPPTY_S2"]
+  n102["SCD_OPPTY"]
+  n101 -->|75 UPDATE| n102
+  n101 -.->|75 UPDATE| n102
+  n103["APP_SCD_OPPTY_V"]
+  n103 -->|76 LOAD_APPEND| n102
+  n7["LKP_A_PULL_OPP_VAR"]
+  n399["LKP_X_PULL_OPP_VAR"]
+  n7 -->|83 LOAD_REPLACE| n399
+  n400["RPT_DAILY_LIST_1C_V"]
+  n401["RPT_DAILY_LIST_1C"]
+  n400 -->|87 LOAD_REPLACE| n401
+  n402["RPT_DAILY_LIST_V"]
+  n403["RPT_DAILY_LIST"]
+  n402 -->|88 LOAD_REPLACE| n403
+  n106["LKP_A_PULL_DAILY_LIST_ACCTS_V"]
+  n107["LKP_A_PULL_DAILY_LIST_ACCTS"]
+  n106 -->|89 LOAD_REPLACE| n107
+  style n107 fill:#e8f5e9,stroke:#2e7d32
+  style n400 fill:#e3f2fd,stroke:#1565c0
+  style n7 fill:#fff8e1,stroke:#f9a825
+  style n103 fill:#e3f2fd,stroke:#1565c0
+  style n401 fill:#e8f5e9,stroke:#2e7d32
+  style n399 fill:#e8f5e9,stroke:#2e7d32
+  style n102 fill:#e8f5e9,stroke:#2e7d32
+  style n403 fill:#e8f5e9,stroke:#2e7d32
+  style n402 fill:#e3f2fd,stroke:#1565c0
+  style n106 fill:#e3f2fd,stroke:#1565c0
+  style n101 fill:#fff8e1,stroke:#f9a825

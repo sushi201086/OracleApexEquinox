@@ -1,0 +1,46 @@
+flowchart LR
+  n4["LKP_A_PULL_VAR_V"]
+  n5["LKP_A_PULL_VAR"]
+  n4 -->|250 LOAD_REPLACE| n5
+  n422["STG_EDGE_S1_V"]
+  n423["STG_EDGE_S1"]
+  n422 -->|251 LOAD_REPLACE| n423
+  n424["STG_EDGE_S2_V"]
+  n425["STG_EDGE_S2"]
+  n424 -->|252 LOAD_REPLACE| n425
+  n426["STG_EDGE_S3_V"]
+  n427["STG_EDGE_S3"]
+  n426 -->|253 LOAD_REPLACE| n427
+  n428["STG_EDGE_S4_V"]
+  n429["STG_EDGE_S4"]
+  n428 -->|254 LOAD_REPLACE| n429
+  n430["STG_EDGE_S5_V"]
+  n431["STG_EDGE_S5"]
+  n430 -->|255 LOAD_REPLACE| n431
+  n432["STG_EDGE_S6_V"]
+  n433["STG_EDGE_S6"]
+  n432 -->|256 LOAD_REPLACE| n433
+  n434["STG_EDGE_S7_V"]
+  n435["STG_EDGE_S7"]
+  n434 -->|257 LOAD_REPLACE| n435
+  n436["STG_EDGE_S8_V"]
+  n437["STG_EDGE_S8"]
+  n436 -->|258 LOAD_KEYED| n437
+  style n429 fill:#e8f5e9,stroke:#2e7d32
+  style n431 fill:#e8f5e9,stroke:#2e7d32
+  style n422 fill:#e3f2fd,stroke:#1565c0
+  style n4 fill:#e3f2fd,stroke:#1565c0
+  style n434 fill:#e3f2fd,stroke:#1565c0
+  style n436 fill:#e3f2fd,stroke:#1565c0
+  style n424 fill:#e3f2fd,stroke:#1565c0
+  style n426 fill:#e3f2fd,stroke:#1565c0
+  style n435 fill:#e8f5e9,stroke:#2e7d32
+  style n428 fill:#e3f2fd,stroke:#1565c0
+  style n425 fill:#e8f5e9,stroke:#2e7d32
+  style n430 fill:#e3f2fd,stroke:#1565c0
+  style n432 fill:#e3f2fd,stroke:#1565c0
+  style n427 fill:#e8f5e9,stroke:#2e7d32
+  style n433 fill:#e8f5e9,stroke:#2e7d32
+  style n437 fill:#e8f5e9,stroke:#2e7d32
+  style n423 fill:#e8f5e9,stroke:#2e7d32
+  style n5 fill:#fff8e1,stroke:#f9a825

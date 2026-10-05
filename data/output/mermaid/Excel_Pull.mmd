@@ -1,0 +1,228 @@
+flowchart LR
+  n104["LKP_A_PULL_CON_SNAPDATE_OVR_V"]
+  n105["LKP_A_PULL_CON_SNAPDATE_OVR"]
+  n104 -->|81 LOAD_REPLACE| n105
+  n409["LKP_A_COE_CUST_ROLL_V"]
+  n410["LKP_A_COE_CUST_ROLL"]
+  n409 -->|82 LOAD_REPLACE| n410
+  n7["LKP_A_PULL_OPP_VAR"]
+  n399["LKP_X_PULL_OPP_VAR"]
+  n7 -->|83 LOAD_REPLACE| n399
+  n400["RPT_DAILY_LIST_1C_V"]
+  n401["RPT_DAILY_LIST_1C"]
+  n400 -->|87 LOAD_REPLACE| n401
+  n402["RPT_DAILY_LIST_V"]
+  n403["RPT_DAILY_LIST"]
+  n402 -->|88 LOAD_REPLACE| n403
+  n106["LKP_A_PULL_DAILY_LIST_ACCTS_V"]
+  n107["LKP_A_PULL_DAILY_LIST_ACCTS"]
+  n106 -->|89 LOAD_REPLACE| n107
+  n438["APP_SNAP_DAILY_LIST_V"]
+  n439["SNAP_DAILY_LIST"]
+  n438 -->|90 LOAD_KEYED| n439
+  n108["STG_DAILY_LIST_CON_OPPTY_S1_V"]
+  n109["STG_DAILY_LIST_CON_OPPTY_S1"]
+  n108 -->|91 LOAD_REPLACE| n109
+  n110["STG_DAILY_LIST_CON_OPPTY_S2_V"]
+  n111["STG_DAILY_LIST_CON_OPPTY_S2"]
+  n110 -->|92 LOAD_REPLACE| n111
+  n112["STG_DAILY_LIST_CON_OPPTY_S3_V"]
+  n113["STG_DAILY_LIST_CON_OPPTY_S3"]
+  n112 -->|93 LOAD_REPLACE| n113
+  n114["STG_DAILY_LIST_CON_OPPTY_S4_V"]
+  n115["STG_DAILY_LIST_CON_OPPTY_S4"]
+  n114 -->|94 LOAD_REPLACE| n115
+  n116["STG_DAILY_LIST_CON_OPPTY_S5_V"]
+  n117["STG_DAILY_LIST_CON_OPPTY_S5"]
+  n116 -->|95 LOAD_REPLACE| n117
+  n118["SCD_CON_DTL_OVR_PULL_LCK_V"]
+  n119["SCD_CON_DTL_OVR_PULL_LCK"]
+  n118 -->|96 LOAD_REPLACE| n119
+  n120["STG_PULL_CON_COMPARE_S1_V"]
+  n121["STG_PULL_CON_COMPARE_S1"]
+  n120 -->|97 LOAD_REPLACE| n121
+  n122["STG_PULL_CON_COMPARE_S2_V"]
+  n123["STG_PULL_CON_COMPARE_S2"]
+  n122 -->|98 LOAD_REPLACE| n123
+  n124["STG_PULL_CON_COMPARE_S3_V"]
+  n125["STG_PULL_CON_COMPARE_S3"]
+  n124 -->|99 LOAD_REPLACE| n125
+  n126["STG_PULL_CON_COMPARE_S4_V"]
+  n127["STG_PULL_CON_COMPARE_S4"]
+  n126 -->|100 LOAD_REPLACE| n127
+  n128["STG_PULL_CON_COMPARE_S5_V"]
+  n129["STG_PULL_CON_COMPARE_S5"]
+  n128 -->|101 LOAD_REPLACE| n129
+  n130["RPT_PULL_CON_COMPARE_V"]
+  n131["RPT_PULL_CON_COMPARE"]
+  n130 -->|102 LOAD_REPLACE| n131
+  n132["APP_SNAP_PULL_CON_COMPARE_V"]
+  n133["SNAP_PULL_CON_COMPARE"]
+  n132 -->|103 LOAD_KEYED| n133
+  n134["WEB_COMP_TCV_ACV_S0A_V"]
+  n135["WEB_COMP_TCV_ACV_S0A"]
+  n134 -->|104 LOAD_REPLACE| n135
+  n136["WEB_COMP_TCV_ACV_S0B_V"]
+  n137["WEB_COMP_TCV_ACV_S0B"]
+  n136 -->|105 LOAD_REPLACE| n137
+  n138["WEB_COMP_TCV_ACV_S1_V"]
+  n139["WEB_COMP_TCV_ACV_S1"]
+  n138 -->|106 LOAD_REPLACE| n139
+  n140["WEB_COMP_TCV_ACV_S1A_V"]
+  n141["WEB_COMP_TCV_ACV_S1A"]
+  n140 -->|107 LOAD_REPLACE| n141
+  n142["WEB_COMP_TCV_ACV_S1B_V"]
+  n143["WEB_COMP_TCV_ACV_S1B"]
+  n142 -->|108 LOAD_REPLACE| n143
+  n144["WEB_COMP_TCV_ACV_S2_V"]
+  n145["WEB_COMP_TCV_ACV_S2"]
+  n144 -->|109 LOAD_REPLACE| n145
+  n146["WEB_COMP_TCV_ACV_S2A_V"]
+  n147["WEB_COMP_TCV_ACV_S2A"]
+  n146 -->|110 LOAD_REPLACE| n147
+  n148["WEB_COMP_TCV_ACV_S2B_V"]
+  n149["WEB_COMP_TCV_ACV_S2B"]
+  n148 -->|111 LOAD_REPLACE| n149
+  n150["WEB_COMP_TCV_ACV_S3_V"]
+  n151["WEB_COMP_TCV_ACV_S3"]
+  n150 -->|112 LOAD_REPLACE| n151
+  n152["WEB_COMP_TCV_ACV_S4_V"]
+  n153["WEB_COMP_TCV_ACV_S4"]
+  n152 -->|113 LOAD_REPLACE| n153
+  n154["WEB_COMP_TCV_ACV_S5_V"]
+  n155["SNAP_TCV_ACV"]
+  n154 -->|114 LOAD_KEYED| n155
+  n156["APX_PULL_CON_COMPARE_V"]
+  n157["APX_PULL_CON_COMPARE"]
+  n156 -->|116 LOAD_KEYED| n157
+  n158["APX_PULL_CON_ACCT_V"]
+  n159["APX_PULL_CON_ACCT"]
+  n158 -->|117 LOAD_KEYED| n159
+  n160["STG_XCEPT_S1_V"]
+  n161["STG_XCEPT_S1"]
+  n160 -->|118 LOAD_REPLACE| n161
+  n162["STG_XCEPT_S2_V"]
+  n163["STG_XCEPT_S2"]
+  n162 -->|119 LOAD_REPLACE| n163
+  n164["STG_XCEPT_S3_V"]
+  n165["STG_XCEPT_S3"]
+  n164 -->|120 LOAD_REPLACE| n165
+  n166["SCD_XCEPT"]
+  n165 -.->|121 UPDATE| n166
+  n167["APP_SCD_XCEPT_V"]
+  n167 -->|122 LOAD_APPEND| n166
+  n332["RPT_VARIANCE_S1_V"]
+  n333["RPT_VARIANCE_S1"]
+  n332 -->|238 LOAD_REPLACE| n333
+  n334["RPT_VARIANCE_S2_V"]
+  n335["RPT_VARIANCE_S2"]
+  n334 -->|239 LOAD_REPLACE| n335
+  n336["RPT_VARIANCE_S3_V"]
+  n337["RPT_VARIANCE_S3"]
+  n336 -->|240 LOAD_REPLACE| n337
+  n338["RPT_VARIANCE_S4_V"]
+  n339["RPT_VARIANCE_S4"]
+  n338 -->|241 LOAD_REPLACE| n339
+  n340["RPT_VARIANCE_S5_V"]
+  n341["RPT_VARIANCE_S5"]
+  n340 -->|243 LOAD_REPLACE| n341
+  n342["APP_SNAP_VARIANCE_V"]
+  n343["SNAP_VARIANCE"]
+  n342 -->|244 LOAD_KEYED| n343
+  n440["RPT_XL_PULL_STATUS_V"]
+  n441["RPT_XL_PULL_STATUS"]
+  n440 -->|10005 LOAD_REPLACE| n441
+  n442["BOOKINGS.SEND_XL_PULL_STATUS_EMAIL"]
+  n374["STATUS EMAIL"]
+  n442 -->|10006 PLSQL_CALL| n374
+  n441 -->|10006 PLSQL_CALL| n374
+  style n402 fill:#e3f2fd,stroke:#1565c0
+  style n146 fill:#e3f2fd,stroke:#1565c0
+  style n438 fill:#e3f2fd,stroke:#1565c0
+  style n109 fill:#e8f5e9,stroke:#2e7d32
+  style n154 fill:#e3f2fd,stroke:#1565c0
+  style n342 fill:#e3f2fd,stroke:#1565c0
+  style n166 fill:#e8f5e9,stroke:#2e7d32
+  style n131 fill:#e8f5e9,stroke:#2e7d32
+  style n147 fill:#e8f5e9,stroke:#2e7d32
+  style n149 fill:#e8f5e9,stroke:#2e7d32
+  style n441 fill:#fff8e1,stroke:#f9a825
+  style n335 fill:#e8f5e9,stroke:#2e7d32
+  style n132 fill:#e3f2fd,stroke:#1565c0
+  style n113 fill:#e8f5e9,stroke:#2e7d32
+  style n134 fill:#e3f2fd,stroke:#1565c0
+  style n144 fill:#e3f2fd,stroke:#1565c0
+  style n157 fill:#e8f5e9,stroke:#2e7d32
+  style n117 fill:#e8f5e9,stroke:#2e7d32
+  style n116 fill:#e3f2fd,stroke:#1565c0
+  style n442 fill:#e3f2fd,stroke:#1565c0
+  style n127 fill:#e8f5e9,stroke:#2e7d32
+  style n114 fill:#e3f2fd,stroke:#1565c0
+  style n160 fill:#e3f2fd,stroke:#1565c0
+  style n333 fill:#e8f5e9,stroke:#2e7d32
+  style n140 fill:#e3f2fd,stroke:#1565c0
+  style n343 fill:#e8f5e9,stroke:#2e7d32
+  style n159 fill:#e8f5e9,stroke:#2e7d32
+  style n336 fill:#e3f2fd,stroke:#1565c0
+  style n7 fill:#fff8e1,stroke:#f9a825
+  style n142 fill:#e3f2fd,stroke:#1565c0
+  style n339 fill:#e8f5e9,stroke:#2e7d32
+  style n106 fill:#e3f2fd,stroke:#1565c0
+  style n163 fill:#e8f5e9,stroke:#2e7d32
+  style n107 fill:#e8f5e9,stroke:#2e7d32
+  style n110 fill:#e3f2fd,stroke:#1565c0
+  style n136 fill:#e3f2fd,stroke:#1565c0
+  style n104 fill:#e3f2fd,stroke:#1565c0
+  style n153 fill:#e8f5e9,stroke:#2e7d32
+  style n332 fill:#e3f2fd,stroke:#1565c0
+  style n165 fill:#fff8e1,stroke:#f9a825
+  style n410 fill:#e8f5e9,stroke:#2e7d32
+  style n125 fill:#e8f5e9,stroke:#2e7d32
+  style n108 fill:#e3f2fd,stroke:#1565c0
+  style n105 fill:#e8f5e9,stroke:#2e7d32
+  style n128 fill:#e3f2fd,stroke:#1565c0
+  style n133 fill:#e8f5e9,stroke:#2e7d32
+  style n148 fill:#e3f2fd,stroke:#1565c0
+  style n409 fill:#e3f2fd,stroke:#1565c0
+  style n440 fill:#e3f2fd,stroke:#1565c0
+  style n115 fill:#e8f5e9,stroke:#2e7d32
+  style n112 fill:#e3f2fd,stroke:#1565c0
+  style n337 fill:#e8f5e9,stroke:#2e7d32
+  style n152 fill:#e3f2fd,stroke:#1565c0
+  style n338 fill:#e3f2fd,stroke:#1565c0
+  style n158 fill:#e3f2fd,stroke:#1565c0
+  style n401 fill:#e8f5e9,stroke:#2e7d32
+  style n138 fill:#e3f2fd,stroke:#1565c0
+  style n130 fill:#e3f2fd,stroke:#1565c0
+  style n167 fill:#e3f2fd,stroke:#1565c0
+  style n341 fill:#e8f5e9,stroke:#2e7d32
+  style n143 fill:#e8f5e9,stroke:#2e7d32
+  style n400 fill:#e3f2fd,stroke:#1565c0
+  style n439 fill:#e8f5e9,stroke:#2e7d32
+  style n119 fill:#e8f5e9,stroke:#2e7d32
+  style n151 fill:#e8f5e9,stroke:#2e7d32
+  style n145 fill:#e8f5e9,stroke:#2e7d32
+  style n399 fill:#e8f5e9,stroke:#2e7d32
+  style n141 fill:#e8f5e9,stroke:#2e7d32
+  style n129 fill:#e8f5e9,stroke:#2e7d32
+  style n120 fill:#e3f2fd,stroke:#1565c0
+  style n334 fill:#e3f2fd,stroke:#1565c0
+  style n126 fill:#e3f2fd,stroke:#1565c0
+  style n374 fill:#e8f5e9,stroke:#2e7d32
+  style n340 fill:#e3f2fd,stroke:#1565c0
+  style n122 fill:#e3f2fd,stroke:#1565c0
+  style n123 fill:#e8f5e9,stroke:#2e7d32
+  style n161 fill:#e8f5e9,stroke:#2e7d32
+  style n403 fill:#e8f5e9,stroke:#2e7d32
+  style n164 fill:#e3f2fd,stroke:#1565c0
+  style n137 fill:#e8f5e9,stroke:#2e7d32
+  style n111 fill:#e8f5e9,stroke:#2e7d32
+  style n139 fill:#e8f5e9,stroke:#2e7d32
+  style n155 fill:#e8f5e9,stroke:#2e7d32
+  style n135 fill:#e8f5e9,stroke:#2e7d32
+  style n118 fill:#e3f2fd,stroke:#1565c0
+  style n156 fill:#e3f2fd,stroke:#1565c0
+  style n162 fill:#e3f2fd,stroke:#1565c0
+  style n150 fill:#e3f2fd,stroke:#1565c0
+  style n124 fill:#e3f2fd,stroke:#1565c0
+  style n121 fill:#e8f5e9,stroke:#2e7d32

@@ -1,0 +1,41 @@
+flowchart LR
+  n0["APP_LKP_M_MON_VAR_V"]
+  n1["LKP_M_MON_VAR"]
+  n0 -->|1 LOAD_APPEND| n1
+  n2["APP_LKP_M_MON_OPP_VAR_V"]
+  n3["LKP_M_MON_OPP_VAR"]
+  n2 -->|4 LOAD_APPEND| n3
+  n4["LKP_A_PULL_VAR_V"]
+  n5["LKP_A_PULL_VAR"]
+  n4 -->|6 LOAD_REPLACE| n5
+  n6["LKP_A_PULL_OPP_VAR_V"]
+  n7["LKP_A_PULL_OPP_VAR"]
+  n6 -->|7 LOAD_REPLACE| n7
+  n8["APP_LKP_M_MON_DTC_VAR_V"]
+  n9["LKP_M_MON_DTC_VAR"]
+  n8 -->|8 LOAD_APPEND| n9
+  n10["LKP_A_PULL_DTC_VAR_V"]
+  n11["LKP_A_PULL_DTC_VAR"]
+  n10 -->|10 LOAD_REPLACE| n11
+  n12["LKP_A_LTST_PROD_V"]
+  n13["LKP_A_LTST_PROD"]
+  n12 -->|11 LOAD_REPLACE| n13
+  n14["LKP_A_LTST_ACCT_V"]
+  n15["LKP_A_LTST_ACCT"]
+  n14 -->|12 LOAD_REPLACE| n15
+  style n13 fill:#e8f5e9,stroke:#2e7d32
+  style n4 fill:#e3f2fd,stroke:#1565c0
+  style n6 fill:#e3f2fd,stroke:#1565c0
+  style n7 fill:#fff8e1,stroke:#f9a825
+  style n10 fill:#e3f2fd,stroke:#1565c0
+  style n12 fill:#e3f2fd,stroke:#1565c0
+  style n1 fill:#e8f5e9,stroke:#2e7d32
+  style n9 fill:#e8f5e9,stroke:#2e7d32
+  style n3 fill:#e8f5e9,stroke:#2e7d32
+  style n0 fill:#e3f2fd,stroke:#1565c0
+  style n8 fill:#e3f2fd,stroke:#1565c0
+  style n11 fill:#e8f5e9,stroke:#2e7d32
+  style n2 fill:#e3f2fd,stroke:#1565c0
+  style n15 fill:#e8f5e9,stroke:#2e7d32
+  style n14 fill:#e3f2fd,stroke:#1565c0
+  style n5 fill:#fff8e1,stroke:#f9a825
