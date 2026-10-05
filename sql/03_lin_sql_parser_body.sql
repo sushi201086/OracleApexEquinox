@@ -2047,19 +2047,28 @@ create or replace package body lin_sql_parser as
     return false;
   end src_has_col;
 
-  function find_source (p_qb pls_integer, p_qual varchar2) return pls_integer is
-    q pls_integer := p_qb;
+  -- Source named p_qual in block p_qb or an enclosing block. Oracle tolerates
+  -- the same alias twice in one FROM (two inline views both called Y) as long as
+  -- each referenced column exists in only one of them, so when an alias repeats
+  -- the source that actually has p_col wins.
+  function find_source (p_qb pls_integer, p_qual varchar2, p_col varchar2 default null)
+    return pls_integer is
+    q     pls_integer := p_qb;
+    first pls_integer;
   begin
     while q is not null loop
+      first := null;
       for i in 1 .. g_src.count loop
-        if g_src(i).qb = q then
-          if g_src(i).alias = p_qual then return i; end if;
-          if g_src(i).alias is null and g_src(i).obj is not null
-             and (g_src(i).obj = p_qual or last_part(g_src(i).obj) = p_qual) then
-            return i;
-          end if;
+        if g_src(i).qb = q
+           and (g_src(i).alias = p_qual
+                or (g_src(i).alias is null and g_src(i).obj is not null
+                    and (g_src(i).obj = p_qual or last_part(g_src(i).obj) = p_qual))) then
+          if p_col is null then return i; end if;
+          if src_has_col(i, p_col) then return i; end if;
+          first := nvl(first, i);
         end if;
       end loop;
+      if first is not null then return first; end if;
       q := g_qb(q).outer_qb;
     end loop;
     return null;
@@ -2098,7 +2107,7 @@ create or replace package body lin_sql_parser as
     dq       pls_integer;
   begin
     if p_qual is not null then
-      s := find_source(p_qb, strip_owner(p_qual));
+      s := find_source(p_qb, strip_owner(p_qual), p_col);
       if s is null then
         add_lin(l, p_qual, p_col, 'DIRECT', 'VALUE', 'UNRESOLVED');
         return l;

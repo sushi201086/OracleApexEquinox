@@ -147,7 +147,11 @@ begin
                  from src_contract_hdr h join src_contract_dtl d on d.con_id = h.con_id group by h.con_id, h.account_id)
                 union all
                 (select h.con_id, h.account_id, 'Previous', 0 from src_contract_hdr h) ) sbc
-         left join src_account ae on (sbc.account_id = ae.account_id)]');
+         left join src_account ae on (sbc.account_id = ae.account_id)]',
+      q'[select y.tot, nvl2(y.region, 1, 0) has_region
+         from src_contract_hdr x
+         left join (select con_id, sum(amt) tot from src_contract_dtl group by con_id) y on y.con_id = x.con_id
+         left join (select account_id, region from src_account) y on y.account_id = x.account_id]');
     l_st  varchar2(20);
     l_col lin_sql_parser.t_col_lins;
     l_bad pls_integer;
