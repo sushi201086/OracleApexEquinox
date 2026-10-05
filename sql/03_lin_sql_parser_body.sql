@@ -1049,6 +1049,31 @@ create or replace package body lin_sql_parser as
   ------------------------------------------------------------------------------
   -- FROM clause
   ------------------------------------------------------------------------------
+  -- Does the '(' at token index p_i start a query expression, e.g.
+  --   (select ...)   ((select ...))   ((select ...) union all (select ...))
+  -- as opposed to a join group  ((select ...) a join b on ...)  or  (t1 join t2 ...)?
+  function is_query_paren (p_i pls_integer) return boolean is
+    k pls_integer := p_i + 1;
+    d pls_integer := 0;
+    u varchar2(128);
+  begin
+    if p_i > g_ntok or g_tok(p_i).ttype != '(' or k > g_ntok then return false; end if;
+    if g_tok(k).ttype = 'ID' and g_tok(k).utxt in ('SELECT', 'WITH') then return true; end if;
+    if g_tok(k).ttype != '(' or not is_query_paren(k) then return false; end if;
+    -- skip the inner parenthesised query and look at what follows it
+    loop
+      exit when k > g_ntok;
+      if g_tok(k).ttype = '(' then d := d + 1;
+      elsif g_tok(k).ttype = ')' then d := d - 1;
+      end if;
+      k := k + 1;
+      exit when d = 0;
+    end loop;
+    if k > g_ntok then return false; end if;
+    u := case when g_tok(k).ttype = 'ID' then substr(g_tok(k).utxt, 1, 128) else g_tok(k).ttype end;
+    return u in (')', 'UNION', 'INTERSECT', 'MINUS', 'EXCEPT', 'ORDER', 'FETCH', 'OFFSET');
+  end is_query_paren;
+
   procedure parse_from_item (p_parent pls_integer, p_qb pls_integer) is
     t     pls_integer;
     dq    pls_integer;
@@ -1059,11 +1084,11 @@ create or replace package body lin_sql_parser as
     spos  pls_integer;
     e     t_einfo;
   begin
-    if tt = '(' and tu(1) in ('SELECT', 'WITH') then
+    if tt = '(' and is_query_paren(g_p) then
+      -- inline view, possibly with extra parentheses / set operators:
+      --   (select ...) x   ( (select ...) union all (select ...) ) x
       t := add_node('DERIVED_TABLE', p_parent);
-      adv;
       dq := parse_query(t, g_qb(p_qb).outer_qb);
-      need(')');
       alias := read_alias;
       g_ast(t).node_name := alias;
       add_src(p_qb, alias, null, dq);

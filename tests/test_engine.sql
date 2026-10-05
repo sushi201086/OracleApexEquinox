@@ -141,7 +141,13 @@ begin
          select n, v from r]',
       q'[select a.account_name, a.region weird ### stuff, b.rate from src_account a, src_fx_rate b]',
       q'[( select dlst."ACCOUNT_NAME", sum(case when dlst.region = 'X' then 1 else 0 end) over (partition by dlst.account_id) c
-           from ( (select account_id, account_name, region from src_account) ) dlst )]');
+           from ( (select account_id, account_name, region from src_account) ) dlst )]',
+      q'[select sbc.con_id, sbc.prev_curr, ae.account_name, amt
+         from ( (select h.con_id, h.account_id, 'Current' prev_curr, sum(d.amt) amt
+                 from src_contract_hdr h join src_contract_dtl d on d.con_id = h.con_id group by h.con_id, h.account_id)
+                union all
+                (select h.con_id, h.account_id, 'Previous', 0 from src_contract_hdr h) ) sbc
+         left join src_account ae on (sbc.account_id = ae.account_id)]');
     l_st  varchar2(20);
     l_col lin_sql_parser.t_col_lins;
     l_bad pls_integer;
