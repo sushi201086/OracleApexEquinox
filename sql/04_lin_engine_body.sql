@@ -803,7 +803,7 @@ create or replace package body lin_engine as
           r.source_column := case when c.source_column = '*' then cur.col else c.source_column end;
           nobj := r.source_object;
           ncol := r.source_column;
-          r.path := substrb(cur.path || ' <- ' || nvl2(nobj, nobj || '.' || ncol, '(constant)'), 1, 4000);
+          r.path := substrb(cur.path || ' <- ' || case when nobj is not null then nobj || '.' || ncol else '(constant)' end, 1, 4000);
         else
           r.source_object := c.source_object;
           r.source_column := cur.col;
