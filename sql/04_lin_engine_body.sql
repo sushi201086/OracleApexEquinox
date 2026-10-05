@@ -763,6 +763,7 @@ create or replace package body lin_engine as
     type t_qs is table of t_q index by pls_integer;
     l_run   number := nvl(p_run_id, latest_run);
     l_up    boolean := upper(nvl(p_direction, 'UP')) not like 'DOWN%';
+    l_dir   number  := case when l_up then 1 else 0 end;     -- SQL cannot use a PL/SQL BOOLEAN before 23ai
     q       t_qs;
     head    pls_integer := 1;
     cur     t_q;
@@ -786,8 +787,8 @@ create or replace package body lin_engine as
                        source_column, ref_role, lineage_origin, job_num
                 from   lin_column_lineage
                 where  run_id = l_run
-                and    ((l_up and target_object = cur.obj and target_column in (cur.col, '*'))
-                     or (not l_up and source_object = cur.obj and source_column in (cur.col, '*')))
+                and    ((l_dir = 1 and target_object = cur.obj and target_column in (cur.col, '*'))
+                     or (l_dir = 0 and source_object = cur.obj and source_column in (cur.col, '*')))
                 order  by job_num nulls first, source_object, source_column, target_object, target_column) loop
         r.lvl            := cur.lvl + 1;
         r.expression     := c.expression;
@@ -841,6 +842,7 @@ create or replace package body lin_engine as
     type t_qs is table of t_q index by pls_integer;
     l_run number := nvl(p_run_id, latest_run);
     l_up  boolean := upper(nvl(p_direction, 'UP')) not like 'DOWN%';
+    l_dir number  := case when l_up then 1 else 0 end;       -- SQL cannot use a PL/SQL BOOLEAN before 23ai
     q     t_qs;
     head  pls_integer := 1;
     cur   t_q;
@@ -859,7 +861,7 @@ create or replace package body lin_engine as
       for e in (select source_node, target_node, job_num, job_names, action_type, edge_origin, ref_context
                 from   lin_edge
                 where  run_id = l_run and is_self_loop = 'N'
-                and    ((l_up and target_node = cur.obj) or (not l_up and source_node = cur.obj))
+                and    ((l_dir = 1 and target_node = cur.obj) or (l_dir = 0 and source_node = cur.obj))
                 order  by job_num nulls first, source_node, target_node) loop
         nxt := case when l_up then e.source_node else e.target_node end;
         r.lvl := cur.lvl + 1;
