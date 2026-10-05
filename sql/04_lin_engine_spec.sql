@@ -15,7 +15,10 @@
 --      on the SCC-condensed graph, derive job -> job dependencies.
 --------------------------------------------------------------------------------
 set define off
-create or replace package lin_engine as
+-- AUTHID CURRENT_USER: dictionary views (ALL_VIEWS, ALL_TAB_COLUMNS,
+-- ALL_DEPENDENCIES) then see objects granted to the caller through roles.
+-- Run it as the schema that owns the LIN_* tables.
+create or replace package lin_engine authid current_user as
 
   type t_trace_row is record (
     lvl            number,

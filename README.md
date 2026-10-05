@@ -126,7 +126,7 @@ One row per (target column, source column) pair:
 | `EXPRESSION` | Source text that produces the target column, e.g. `round(d.amt * nvl(fx.rate, 1), 2)` |
 | `TRANSFORM_TYPE` | `DIRECT`, `RENAME`, `CALCULATED`, `CASE` (`CASE`/`DECODE`), `AGGREGATE`, `WINDOW`, `CONSTANT`, `STAR`. Taken across hops, the strongest transformation wins: an aggregate read through a rename stays `AGGREGATE` |
 | `REF_ROLE` | `VALUE` (feeds the value), `CONDITION` (used in a `CASE WHEN`), `WINDOW` (`PARTITION BY`/`ORDER BY`), `KEY` (the `UNIQUE_COL` of a keyed load) |
-| `RESOLUTION` | `RESOLVED`, `DICTIONARY`, `VIA_STAR`, `UNEXPANDED`, `AMBIGUOUS`, `UNRESOLVED`, `CONSTANT` |
+| `RESOLUTION` | `RESOLVED`, `DICTIONARY`, `INFERRED` (only one candidate table whose columns are unknown), `VIA_STAR`, `UNEXPANDED`, `AMBIGUOUS`, `UNRESOLVED`, `CONSTANT` |
 | `LINEAGE_ORIGIN` | `VIEW_DEF`, `JOB_SQL`, `JOB_STANDARD` |
 
 `LIN_ENGINE.TRACE_COLUMN` walks these rows breadth first, visiting each

@@ -1950,14 +1950,36 @@ create or replace package body lin_sql_parser as
     return null;
   end find_source;
 
+  -- true when the columns of a FROM source cannot be known (no dictionary
+  -- access, table function, derived table with an unexpanded SELECT *)
+  function src_cols_unknown (p_src pls_integer) return boolean is
+    dq pls_integer := g_src(p_src).dq;
+  begin
+    if dq is not null then
+      compute_outputs(dq);
+      for i in g_qb(dq).out_first .. g_qb(dq).out_first + g_qb(dq).out_cnt - 1 loop
+        if g_outs(i).name = '*' then return true; end if;
+      end loop;
+      return false;
+    elsif g_src(p_src).obj is not null then
+      return dict_cols(g_src(p_src).obj).count = 0;
+    end if;
+    return true;
+  end src_cols_unknown;
+
   function resolve (p_qb pls_integer, p_qual varchar2, p_col varchar2) return t_lins is
-    l       t_lins;
-    s       pls_integer;
-    q       pls_integer := p_qb;
-    o       pls_integer;
-    cands   t_ints;
-    matches pls_integer;
-    dq      pls_integer;
+    l        t_lins;
+    s        pls_integer;
+    q        pls_integer := p_qb;
+    o        pls_integer;
+    cands    t_ints;
+    matches  pls_integer;
+    unknowns pls_integer;
+    s_match  pls_integer;
+    s_unk    pls_integer;
+    fallback pls_integer;
+    l_res    varchar2(30) := 'RESOLVED';
+    dq       pls_integer;
   begin
     if p_qual is not null then
       s := find_source(p_qb, strip_owner(p_qual));
@@ -1966,28 +1988,48 @@ create or replace package body lin_sql_parser as
         return l;
       end if;
     else
+      -- unqualified column: innermost query block first, then enclosing
+      -- blocks (correlated subqueries)
       while q is not null and s is null loop
         cands.delete;
         for i in 1 .. g_src.count loop
           if g_src(i).qb = q then cands(cands.count + 1) := i; end if;
         end loop;
-        if cands.count = 1 then
-          s := cands(1);
-        elsif cands.count > 1 then
-          matches := 0;
+        if cands.count > 0 then
+          matches := 0; unknowns := 0; s_match := null; s_unk := null;
           for k in 1 .. cands.count loop
             if src_has_col(cands(k), p_col) then
               matches := matches + 1;
-              s := cands(k);
+              s_match := cands(k);
+            elsif src_cols_unknown(cands(k)) then
+              unknowns := unknowns + 1;
+              s_unk := cands(k);
             end if;
           end loop;
-          if matches != 1 then
+          if matches = 1 then
+            s := s_match;
+          elsif matches > 1 then
+            add_lin(l, null, p_col, 'DIRECT', 'VALUE', 'AMBIGUOUS');
+            return l;
+          elsif cands.count = 1 then
+            -- single source: it owns the column unless an outer block does
+            fallback := nvl(fallback, cands(1));
+            if unknowns = 1 then s := cands(1); end if;
+          elsif unknowns = 1 then
+            s := s_unk;                    -- the only source whose columns are unknown
+            l_res := 'INFERRED';
+          elsif unknowns > 1 then
             add_lin(l, null, p_col, 'DIRECT', 'VALUE', 'AMBIGUOUS');
             return l;
           end if;
+          -- matches = 0 and unknowns = 0: the column belongs to an outer block
         end if;
         q := g_qb(q).outer_qb;
       end loop;
+      if s is null then
+        s := fallback;
+        l_res := 'INFERRED';
+      end if;
       if s is null then
         add_lin(l, null, p_col, 'DIRECT', 'VALUE', 'UNRESOLVED');
         return l;
@@ -2017,7 +2059,7 @@ create or replace package body lin_sql_parser as
         end if;
       end if;
     elsif g_src(s).obj is not null then
-      add_lin(l, g_src(s).obj, p_col, 'DIRECT', 'VALUE', 'RESOLVED');
+      add_lin(l, g_src(s).obj, p_col, 'DIRECT', 'VALUE', l_res);
     else
       add_lin(l, null, p_col, 'DIRECT', 'VALUE', 'UNRESOLVED');
     end if;
