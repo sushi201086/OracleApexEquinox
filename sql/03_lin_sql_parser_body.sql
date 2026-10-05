@@ -1053,6 +1053,7 @@ create or replace package body lin_sql_parser as
     t     pls_integer;
     dq    pls_integer;
     ci    pls_integer;
+    nsrc  pls_integer;
     nm    varchar2(261);
     alias varchar2(261);
     spos  pls_integer;
@@ -1066,12 +1067,24 @@ create or replace package body lin_sql_parser as
       alias := read_alias;
       g_ast(t).node_name := alias;
       add_src(p_qb, alias, null, dq);
-    elsif tt = '(' then                      -- ( a JOIN b ON ... )
+    elsif tt = '(' then                      -- ( a JOIN b ON ... )  or  ( (subquery) ) alias
       t := add_node('JOIN_GROUP', p_parent);
       adv;
+      nsrc := g_src.count;
       parse_from_list(t, p_qb);
       need(')');
       alias := read_alias;
+      -- a single table / subquery wrapped in extra parentheses takes the outer alias:
+      --   FROM ( (select ... from x) ) dlst
+      if alias is not null then
+        dq := null;                        -- reused: index of the single source at this level
+        for i in nsrc + 1 .. g_src.count loop
+          if g_src(i).qb = p_qb then
+            if dq is null then dq := i; else dq := -1; end if;
+          end if;
+        end loop;
+        if dq > 0 then g_src(dq).alias := alias; end if;
+      end if;
     elsif tu = 'LATERAL' and tt(1) = '(' then
       t := add_node('DERIVED_TABLE', p_parent, 'LATERAL');
       adv; adv;

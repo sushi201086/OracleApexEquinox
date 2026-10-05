@@ -139,7 +139,9 @@ begin
       q'[select x."SUM(AMT)" amt from (select con_id, sum(amt) from src_contract_dtl group by con_id) x]',
       q'[with r (n, v) as (select 1, con_id from src_contract_dtl union all select n + 1, v from r where n < 3)
          select n, v from r]',
-      q'[select a.account_name, a.region weird ### stuff, b.rate from src_account a, src_fx_rate b]');
+      q'[select a.account_name, a.region weird ### stuff, b.rate from src_account a, src_fx_rate b]',
+      q'[( select dlst."ACCOUNT_NAME", sum(case when dlst.region = 'X' then 1 else 0 end) over (partition by dlst.account_id) c
+           from ( (select account_id, account_name, region from src_account) ) dlst )]');
     l_st  varchar2(20);
     l_col lin_sql_parser.t_col_lins;
     l_bad pls_integer;
